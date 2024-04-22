@@ -26,10 +26,14 @@
 
 .form-floating{
     width: 400px;
+    position: relative;
 }
 
 
 .login_btn{
+    display: flex;
+    align-items: center;
+    align-content: space-between;
     position: relative;
 }
 
@@ -39,10 +43,37 @@
 
 
 .navbar{
+    position: relative;
+    height: 60px;
     background-color: darkgreen;
 }
 
 .form{
+    position: absolute;
     width: 200px;
-    margin-left: 20px;
+    right: 10px ;
+}
+
+
+.nav_title{
+    margin: 0 0px 0px 10px ;
+}
+
+.nav_title-name{
+    font-style: italic;
+    color: deepskyblue;
+    margin-bottom: 0;
+}
+
+
+.fa-regular{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-12px, -19px);
+}
+
+.forgot_link{
+    position: absolute;
+    right: 0;
 }
