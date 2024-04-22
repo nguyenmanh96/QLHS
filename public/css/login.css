@@ -1,0 +1,48 @@
+.container{
+    margin-top: 100px ;
+    align-items: center;
+    position: relative;
+
+
+}
+
+.block{
+    position: fixed;
+    margin-left: 400px;
+}
+
+.title{
+    position: relative;
+    color: brown;
+    width: 400px;
+}
+
+.title_name{
+    position: relative;
+    font-size: 30px;
+    font-style: normal;
+    align-items: center;
+}
+
+.form-floating{
+    width: 400px;
+}
+
+
+.login_btn{
+    position: relative;
+}
+
+.btn{
+    font-style: italic;
+}
+
+
+.navbar{
+    background-color: darkgreen;
+}
+
+.form{
+    width: 200px;
+    margin-left: 20px;
+}
