@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Students\StudentDashboardController;
+use App\Http\Controllers\Login\ForgotController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,10 @@ use App\Http\Controllers\Students\StudentDashboardController;
 
 
 //Login
-route::get('login',[LoginController::class,'loginAccount']);
+route::prefix('login')->group(function (){
+    route::get('/',[LoginController::class,'loginAccount'])->name('login');
+    route::get('/forgot',[ForgotController::class,'fogortAccount'])->name('forgot');
+});
 
 
 //Admin
@@ -36,14 +41,14 @@ route::prefix('students')->group(function (){
 
 
 
-Route::group([
-    'prefix' => 'qr-code',
-    'as' => 'qr-code.',
-], function () {
-        Route::get('/', [QrCodeController::class, 'index'])
-            ->name('index');
-        Route::get('/download', [QrCodeController::class, 'download'])
-            ->name('download')
-            ->middleware('permission:admin.qr-code.list|admin.qr-code.download');
-        Route::post('/store', [QrCodeController::class, 'store'])->name('store')->middleware('permission:admin.qr-code.store');
-});
+//Route::group([
+//    'prefix' => 'qr-code',
+//    'as' => 'qr-code.',
+//], function () {
+//        Route::get('/', [QrCodeController::class, 'index'])
+//            ->name('index');
+//        Route::get('/download', [QrCodeController::class, 'download'])
+//            ->name('download')
+//            ->middleware('permission:admin.qr-code.list|admin.qr-code.download');
+//        Route::post('/store', [QrCodeController::class, 'store'])->name('store')->middleware('permission:admin.qr-code.store');
+//});

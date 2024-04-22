@@ -1,5 +1,6 @@
 @extends('layouts.guest.app')
 @section('content')
+<link rel="stylesheet" href="{{asset('css/login.css')}}">
 <div class="container">
     <div class="block">
         <div class="title">
@@ -16,9 +17,10 @@
         </div>
         <div class="login_btn">
             <button type="button" class="btn btn-warning">Đăng nhập</button>
-            <a class="forgot_link" href="">Quên mật khẩu?</a>
+            <a class="forgot_link" href="{{route('forgot')}}">Quên mật khẩu?</a>
         </div>
     </div>
 </div>
+<script src="{{asset('js/app.js')}}"></script>
 @endsection
 

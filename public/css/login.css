@@ -3,7 +3,6 @@
     align-items: center;
     position: relative;
 
-
 }
 
 .block{
@@ -13,7 +12,6 @@
 
 .title{
     position: relative;
-    color: brown;
     width: 400px;
 }
 
@@ -39,30 +37,6 @@
 
 .btn{
     font-style: italic;
-}
-
-
-.navbar{
-    position: relative;
-    height: 60px;
-    background-color: darkgreen;
-}
-
-.form{
-    position: absolute;
-    width: 200px;
-    right: 10px ;
-}
-
-
-.nav_title{
-    margin: 0 0px 0px 10px ;
-}
-
-.nav_title-name{
-    font-style: italic;
-    color: deepskyblue;
-    margin-bottom: 0;
 }
 
 
