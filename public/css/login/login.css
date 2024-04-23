@@ -6,20 +6,21 @@
 }
 
 .block{
-    position: fixed;
     margin-left: 400px;
 }
 
 .title{
     position: relative;
     width: 400px;
+    margin-bottom: 20px;
 }
 
 .title_name{
     position: relative;
-    font-size: 30px;
-    font-style: normal;
+    font-size: 40px;
+    font-style:normal;
     align-items: center;
+    color: red;
 }
 
 .form-floating{
@@ -29,10 +30,11 @@
 
 
 .login_btn{
+    position: absolute;
     display: flex;
     align-items: center;
-    align-content: space-between;
-    position: relative;
+    width: 400px;
+    justify-content: space-between;
 }
 
 .btn{
@@ -48,6 +50,5 @@
 }
 
 .forgot_link{
-    position: absolute;
-    right: 0;
+
 }

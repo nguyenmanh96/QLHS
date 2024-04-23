@@ -1,21 +1,17 @@
 @extends('layouts.guest.app')
 @section('content')
+    <link rel="stylesheet" href="{{asset('css/login/forgot.css')}}">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Quên mật khẩu</div>
-                    <div class="card-body">
-                        <form >
-                            @csrf
-                            <div class="form-group">
-                                <label for="email">Địa chỉ Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Nhập địa chỉ email của bạn">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Gửi mail cài lại mật khẩu</button>
-                        </form>
-                    </div>
-                </div>
+        <div class="block">
+            <div class="title">
+                <h3 class="title_name"> Thay đổi mật khẩu </h3>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Email đăng nhập">
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="login_btn">
+                <button type="button" class="btn btn-warning">Gửi link</button>
             </div>
         </div>
     </div>
