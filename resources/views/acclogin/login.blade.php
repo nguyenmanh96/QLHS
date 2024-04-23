@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="local">
-        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+        <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-google"></i>
         </button>
     </div>
