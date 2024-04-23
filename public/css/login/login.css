@@ -19,7 +19,7 @@
     font-size: 40px;
     font-style:normal;
     align-items: center;
-    color: red;
+    color: blue;
 }
 
 .form-floating{
@@ -42,3 +42,6 @@
     transform: translate(-12px, -19px);
 }
 
+/*.local{*/
+/*    position: absolute;*/
+/*}*/

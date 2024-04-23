@@ -20,6 +20,11 @@
             <a class="forgot_link" href="{{route('forgot')}}">Quên mật khẩu?</a>
         </div>
     </div>
+    <div class="local">
+        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-google"></i>
+        </button>
+    </div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
 @endsection
