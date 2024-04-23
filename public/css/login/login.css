@@ -2,7 +2,6 @@
     margin-top: 100px ;
     align-items: center;
     position: relative;
-
 }
 
 .block{
@@ -43,6 +42,3 @@
     transform: translate(-12px, -19px);
 }
 
-.forgot_link{
-
-}
