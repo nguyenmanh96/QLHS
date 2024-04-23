@@ -28,7 +28,6 @@
     position: relative;
 }
 
-
 .login_btn{
     position: absolute;
     display: flex;
@@ -36,11 +35,6 @@
     width: 400px;
     justify-content: space-between;
 }
-
-.btn{
-    font-style: italic;
-}
-
 
 .fa-regular{
     position: absolute;
