@@ -1,14 +1,10 @@
 .container{
     margin-top: 100px ;
-
 }
-
 
 .block{
     width: 400px;
     margin-left: 400px;
-
-
 }
 
 .title{
@@ -18,20 +14,5 @@
 .title_name{
     color: red;
     font-size: 40px;
-
 }
 
-.form-floating{
-
-}
-
-.form-control{
-
-}
-
-.login_btn{
-}
-
-.btn{
-    
-}
