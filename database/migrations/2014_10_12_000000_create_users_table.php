@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password',255)->nullable();
             $table->enum('type',['Admin','Student'])->nullable();
             $table->string('avatar',255);
-            $table->integer('google_token')->nullable();
+            $table->string('google_token',50)->nullable();
             $table->integer('student_id')->unique()->nullable();
         });
     }
