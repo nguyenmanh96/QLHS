@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('code',20);
             $table->date('dob');
             $table->integer('department_id');
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('student_id');
             $table->integer('subject_id');
             $table->enum('status',['Resistered','Unregistered','Completed']);
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 

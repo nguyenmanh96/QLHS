@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('avatar',255);
             $table->string('google_token',50);
             $table->integer('student_id')->unique();
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 
