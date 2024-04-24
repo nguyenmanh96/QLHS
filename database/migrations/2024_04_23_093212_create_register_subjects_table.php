@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('register_subjects', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('student_id');
-            $table->integer('subject_id');
-            $table->enum('status',['Resistered','Unregistered','Completed']);
+            $table->id();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('subject_id');
+            $table->enum('status',['Registered','Unregistered','Completed']);
             $table->timestamps();
         });
     }
