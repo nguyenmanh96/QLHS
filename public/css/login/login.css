@@ -42,3 +42,13 @@
     transform: translate(-12px, -19px);
 }
 
+
+.login_btn .btn.btn-link{
+    color: white;
+    background-color: red;
+    border: solid 1px;
+}
+
+.social.title{
+    font-size: 8px;
+}

@@ -15,11 +15,15 @@
             <label for="floatingPassword">Mật khẩu </label>
             <span class="password-toggle-icon" id="button-hide"><i class="fa-regular fa-eye-slash"></i></span>
         </div>
-        <div class="login_btn">
-            <button type="button" class="btn btn-warning">Đăng nhập</button>
+        <div class="login_btn"><button type="button" class="btn btn-warning">Đăng nhập</button>
+            <span class="social.title">or sign up with:</span>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google"></i>
+            </button>
             <a class="forgot_link" href="{{route('forgot')}}">Quên mật khẩu?</a>
         </div>
     </div>
 </div>
+
 <script src="{{asset('js/app.js')}}"></script>
 @endsection
