@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations;
 
 class Subject extends Model
 {
     protected $table = 'sujects';
 
-    protected $primaryKey = 'id' ;
 
     public function departments(){
         return $this->belongsTo(Department::class);

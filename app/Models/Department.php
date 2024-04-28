@@ -9,7 +9,6 @@ class Department extends Model
 {
     protected $table = 'departments';
 
-    protected $primaryKey = 'id';
 
     public function students(){
         return $this->hasMany(Student::class);

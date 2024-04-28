@@ -91,6 +91,7 @@ return [
     */
 
     'passwords' => [
+        'algorithm'=> 'bcrypt',
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',

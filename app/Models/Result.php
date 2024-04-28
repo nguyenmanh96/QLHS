@@ -9,7 +9,6 @@ class Result extends Model
 {
     protected $table = 'results';
 
-    protected $primaryKey = 'id';
 
     public function students(){
         return $this->belongsTo(Student::class);

@@ -9,7 +9,6 @@ class Student extends Model
 {
     protected $table = 'students';
 
-    protected $primaryKey = 'id';
 
     public function users(){
         return $this->belongsTo(User::class);

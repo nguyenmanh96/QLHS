@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('password',255);
             $table->enum('type',['Admin','Student']);
             $table->string('avatar',255);
-            $table->string('google_token',50);
-            $table->unsignedBigInteger('student_id');
+            $table->string('google_token',50)->nullable();
+            $table->unsignedBigInteger('student_id')->nullable();
             $table->timestamps();
         });
     }

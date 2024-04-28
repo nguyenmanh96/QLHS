@@ -9,5 +9,5 @@ class RegisterSubject extends Model
 {
     protected $table = 'register_subjects';
 
-    protected $primaryKey = 'id';
+
 }
