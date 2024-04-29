@@ -14,20 +14,15 @@ Route::get('/',function (){
 
 Route::prefix('login')->group(function (){
     Route::get('/',[AuthController::class,'getFormLogin'])->name('formlogin');
-    Route::post('/',[AuthController::class,'submitLogin'])->name('login');
+    Route::post('/',[AuthController::class,'submitLogin'])->middleware('auth.user')->name('login');
     Route::get('/forgot',[ForgotController::class,'fogortAccount'])->name('forgot');
 });
 
 Route::prefix('admin')->group(function (){
-    Route::get('/',[AdminDashboardController::class,'adminDashboard']);
-    Route::get('/delete-user',function (){
-        $user = \App\Models\User::find(2);
-        $user->delete();
-        echo 'Da xoa item';
-    });
+    Route::get('/',[AdminDashboardController::class,'adminDashboard'])->name('adminlogin');
 });
 
 Route::prefix('students')->group(function (){
-    Route::get('/',[StudentDashboardController::class,'stDashboard']);
+    Route::get('/',[StudentDashboardController::class,'studentDashboard'])->name('studentlogin');
 });
 

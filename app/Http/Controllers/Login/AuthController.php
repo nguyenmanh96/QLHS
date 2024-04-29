@@ -11,21 +11,11 @@ class AuthController extends Controller
 {
     public function getFormLogin()
     {
-        return view('login.login');
+        return view('guest.login');
     }
 
-    public function submitLogin(Request $request)
+    public function submitLogin()
     {
-       $email = $request->input('email');
-       $password =$request->input('password');
-
-
-       if (Auth::attempt([
-            'email'=> $email,
-            'password'=> $password,
-       ])) {
-            $user = User::where('type','==','Admin')->get()->first();
-       }
-
+        return view('admin.dashboard');
     }
 }

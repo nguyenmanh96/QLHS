@@ -11,3 +11,14 @@ togglePassword.addEventListener("click", function () {
         togglePassword.classList.add("fa-eye");
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var errorAlert = document.getElementById('errorAlert');
+    if (errorAlert) {
+        errorAlert.classList.add('show');
+        setTimeout(function () {
+            errorAlert.classList.remove('show');
+        }, 2000);
+    }
+});
+
