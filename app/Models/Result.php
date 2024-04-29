@@ -9,6 +9,11 @@ class Result extends Model
 {
     protected $table = 'results';
 
+    protected $fillable = [
+        'student_id',
+        'subject_id',
+        'score',
+    ];
 
     public function students(){
         return $this->belongsTo(Student::class);

@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('register_subjects', function (Blueprint $table) {
@@ -17,12 +15,11 @@ return new class extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->enum('status',['Registered','Unregistered','Completed']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('register_subjects');

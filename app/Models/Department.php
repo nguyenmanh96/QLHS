@@ -9,6 +9,9 @@ class Department extends Model
 {
     protected $table = 'departments';
 
+    protected $fillable = [
+        'name',
+    ];
 
     public function students(){
         return $this->hasMany(Student::class);

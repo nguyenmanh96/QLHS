@@ -9,25 +9,28 @@ class Student extends Model
 {
     protected $table = 'students';
 
+    protected $fillable = [
+        'name',
+        'code',
+        'dob',
+        'department_id',
+    ];
 
-    public function users(){
-        return $this->belongsTo(User::class);
+
+    public function user(){
+        return $this->hasOne(User::class);
     }
 
     public function results(){
         return $this->hasMany(Result::class);
     }
 
-    public function subjects()
-    {
-        return $this->hasManyThrough(Subject::class, Result::class);
-    }
 
     public function departments(){
         return $this->belongsTo(Department::class);
     }
 
-    public function registeredSubjects(){
-        return $this->belongsToMany(Subject::class,'register_subjects');
+    public function registerSubjects(){
+        return $this->hasMany(RegisterSubject::class);
     }
 }

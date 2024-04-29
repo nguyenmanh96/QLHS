@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\table;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,7 +18,13 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678'),
             'type' => 'Admin',
-            'avatar' => 'aaaa',
         ]);
+
+        DB::table('users')->insert([
+            'email' => 'student@gmail.com',
+            'password' => bcrypt('qwerty'),
+            'type' => 'Student',
+        ]);
+
     }
 }

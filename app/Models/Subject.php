@@ -10,12 +10,19 @@ class Subject extends Model
 {
     protected $table = 'sujects';
 
-
+    protected $fillable = [
+        'name',
+        'department_id',
+    ];
     public function departments(){
         return $this->belongsTo(Department::class);
     }
 
     public function registeredStudents(){
-        return $this->belongsToMany(Student::class,'register_subjects');
+        return $this->hasMany(RegisterSubject::class);
+    }
+
+    public function results(){
+        return $this->hasMany(Result::class);
     }
 }
