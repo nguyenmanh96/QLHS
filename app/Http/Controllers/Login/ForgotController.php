@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class ForgotController extends Controller
 {
     public function fogortAccount(){
-        return view('acclogin.forgot');
+        return view('guest.forgot');
     }
 }

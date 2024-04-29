@@ -52,3 +52,11 @@
 .social.title{
     font-size: 8px;
 }
+
+#errorAlert{
+    display: none;
+}
+
+#errorAlert.show {
+    display: block;
+}
