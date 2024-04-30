@@ -5,12 +5,14 @@ use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Students\StudentDashboardController;
 use App\Http\Controllers\Login\ForgotController;
+use App\Http\Controllers\LanguageChangeController;
 use App\Models\User;
 
 Route::get('/',function (){
     return redirect()->route('formlogin');
 });
 
+Route::post('/change-language',[LanguageChangeController::class,'changeLanguage'] )->name('change_language');
 
 Route::prefix('login')->group(function (){
     Route::get('/',[AuthController::class,'getFormLogin'])->name('formlogin');

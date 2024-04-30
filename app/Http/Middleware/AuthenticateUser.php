@@ -27,6 +27,6 @@ class AuthenticateUser
                 return redirect()->route('studentlogin')->with('success', 'Chào mừng sinh viên'. ' ' . $user->email);;
             }
         }
-        return redirect()->back()->with('error', 'Email hoặc mật khẩu không chính xác.');
+        return redirect()->back()->with('error', __('messages.login_fail'));
     }
 }

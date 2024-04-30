@@ -11,7 +11,10 @@
 .nav_title-name{
     font-style: italic;
     color: deepskyblue;
-    margin-bottom: 0;
+    text-decoration: none;
+    font-size: 40px;
+    position: absolute;
+    top: -3px;
 }
 
 .form{
