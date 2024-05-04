@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
-class User extends Model
+class User extends Authenticatable implements CanResetPassword
 {
-    use Notifiable, HasApiTokens, HasFactory ;
+    use Notifiable, HasApiTokens, HasFactory;
 
     protected $table = 'users';
-
 
     protected $fillable = [
         'email',
@@ -30,3 +28,5 @@ class User extends Model
         return $this->belongsTo(Student::class);
     }
 }
+
+

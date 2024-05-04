@@ -3,7 +3,7 @@
         <a class="nav_title-name" href="{{route('login')}}">NEWWAVE</a>
     </div>
     <div class="form">
-        <form action="{{ route('change_language') }}" method="POST" >
+        <form class="lang_form" action="{{ route('change_language') }}" method="POST" >
             @csrf
             <select class="form-select" aria-label="Default select example" name="locale" onchange="this.form.submit()">
                 <option value="vi" {{ session('locale') == 'vi' ? 'selected' : '' }}>Tiếng Việt</option>

@@ -1,8 +1,9 @@
 .navbar{
     position: relative;
     height: 60px;
-    background-color: darkgreen;
+    background-color: darkcyan;
 }
+
 
 .nav_title{
     margin: 0px 0px 0px 10px ;
@@ -17,15 +18,20 @@
     top: -3px;
 }
 
+
 .form{
     position: absolute;
     width: 200px;
     right: 10px ;
 }
 
+.lang_form{
+    padding: 0;
+}
+
 
 .footer{
-    background-color: darkgreen;
+    background-color: darkcyan;
     position: absolute;
     bottom: 0;
     width: 100%;

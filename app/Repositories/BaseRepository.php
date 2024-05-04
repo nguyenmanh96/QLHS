@@ -25,7 +25,7 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function create(array $attributes)
     {
-        return $this->model->create($attributes);
+        return $this->model::create($attributes);
     }
 
     public function update($id, array $attributes)
@@ -38,5 +38,10 @@ class BaseRepository implements BaseRepositoryInterface
     public function delete($id)
     {
         return $this->model->destroy($id);
+    }
+
+    public function where($col, $val)
+    {
+        return $this->model->where($col, $val);
     }
 }

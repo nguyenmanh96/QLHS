@@ -16,6 +16,7 @@ class AuthController extends Controller
 
     public function submitLogin()
     {
+
         return view('admin.dashboard');
     }
 }

@@ -13,10 +13,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Danh sách quản lý</h5>
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="#">Màn hình chính</a></li>
-                            <li class="list-group-item"><a href="#">Quản lý học sinh</a></li>
-                            <li class="list-group-item"><a href="#">Quản lý môn học</a></li>
-                            <li class="list-group-item"><a href="#">Quản lý khoa</a></li>
+                            <li class="list-group-item"><a href="#" >Màn hình chính</a></li>
+                            <li class="list-group-item"><a href="#" >Quản lý học sinh</a></li>
+                            <li class="list-group-item"><a href="#" >Quản lý môn học</a></li>
+                            <li class="list-group-item"><a href="#" >Quản lý khoa</a></li>
                         </ul>
                     </div>
                 </div>
