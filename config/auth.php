@@ -65,10 +65,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+//         'users' => [
+//             'driver' => 'database',
+//             'table' => 'users',
+//         ],
     ],
 
     /*
@@ -91,6 +91,7 @@ return [
     */
 
     'passwords' => [
+        'algorithm'=> 'bcrypt',
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',

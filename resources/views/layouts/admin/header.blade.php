@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">QUẢN LÝ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tên Người Dùng
+                        </button>
+                        <form action="{{route('logout')}}" method="POST" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @csrf
+                            <button type="submit" class="dropdown-item" href="#">Logout</button>
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Danh sách học sinh</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Danh sách môn học</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Danh sách khoa</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
