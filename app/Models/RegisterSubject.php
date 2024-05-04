@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RegisterSubject extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'register_subjects';
 
     protected $fillable = [
@@ -15,12 +17,12 @@ class RegisterSubject extends Model
         'status',
     ];
 
-    public function student()
+    public function students()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsToMany(Student::class);
     }
 
     public function subjects(){
-        return $this->belongsTo(Subject::class);
+        return $this->belongsToMany(Subject::class);
     }
 }

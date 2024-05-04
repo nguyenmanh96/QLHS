@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subject extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'sujects';
 
     protected $fillable = [
@@ -18,7 +19,7 @@ class Subject extends Model
         return $this->belongsTo(Department::class);
     }
 
-    public function registeredStudents(){
+    public function registerSubjects(){
         return $this->hasMany(RegisterSubject::class);
     }
 
