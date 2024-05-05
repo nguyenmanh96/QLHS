@@ -22,7 +22,7 @@ Route::post('/change-lang', [LanguageChangeController::class, 'changeLanguage'])
 
 Route::prefix('login')->group(function (){
     Route::get('/',[AuthController::class,'getFormLogin'])->name('formlogin');
-    Route::post('/',[AuthController::class,'submitLogin'])->middleware('auth.user')->name('login');
+    Route::post('/',[AuthController::class,'submitLogin'])->name('login');
 });
 
 Route::get('/forgot',[ForgotController::class,'getFormForgot'])->name('form-forgot');
