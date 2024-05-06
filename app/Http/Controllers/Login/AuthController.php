@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -17,6 +16,11 @@ class AuthController extends Controller
 
     public function submitLogin(Request $request)
     {
+        $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+            'password' => 'required',
+        ]);
+
         $email = $request->input('email');
         $password = $request->input('password');
 
@@ -25,7 +29,7 @@ class AuthController extends Controller
             'password' => $password,
         ])) {
             $user = Auth::user();
-            Session::put('userinfo',$email);
+            Session::put('userinfo', $email);
 
             if ($user->type == 'Admin') {
                 return redirect()->route('admin-dashboard')->with('success', 'Chào mừng ' . ' ' . $user->email);

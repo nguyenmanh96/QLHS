@@ -1,11 +1,7 @@
 @extends('layouts.admin.layout')
 
 @section('content')
-    @if(session('success'))
-        <div id="successAlert" class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    @include('layouts._message')
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-md-3">

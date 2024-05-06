@@ -8,5 +8,6 @@ return [
     'send_link' => 'Send link',
     'forgot_pw' => 'Forgot password',
     'login_fail' => 'Email or password is incorrect.',
+    'reset_text'=>'You can reset your password here.',
 ];
 
