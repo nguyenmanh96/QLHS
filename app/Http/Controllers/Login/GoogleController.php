@@ -3,51 +3,50 @@
 namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interface\UserRepositoryInterface;
 use Exception;
-use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
-use App\Repositories\Repository\UserRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Authenticatable;
+use App\Repositories\Repository\UserRepository;
 
 
 class GoogleController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function redirectToGoogle()
     {
-
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->with(["prompt" => "select_account"])->redirect();
     }
 
     public function handleGoogleCallback()
     {
-
         try {
             $user = Socialite::driver('google')->stateless()->user();
-            $finduser = User::where('google_token', $user->id)->first();
+            $googleToken = $user->id;
+            $findUser = $this->userRepository->findByGoogleToken($googleToken);
 
-            if ($finduser) {
-                Auth::login($finduser);
-
-                return redirect()->intended('/students');
-            } else {
-                $newUser = User::create([
+            if (!$findUser) {
+                $userData = [
                     'email' => $user->email,
                     'google_token' => $user->id,
-                    'password' => bcrypt('motdentam'),
                     'type' => 'Student'
-                ]);
-
-                Auth::login($newUser);
-
-                return redirect()->intended('/students');
+                ];
+                $findUser = $this->userRepository->create($userData);
             }
 
+            Auth::login($findUser);
+
+            return redirect()->intended('/students')->with([
+                'success' => __('messages.welcome') . ' ' . $user->email,
+            ]);
+
         } catch (Exception $e) {
-            dd($e->getMessage());
+            return $e->getMessage();
         }
     }
-
 }

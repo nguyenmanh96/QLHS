@@ -1,19 +1,33 @@
-.container{
-    margin-top: 100px ;
+.space {
+    height: 60px;
 }
 
-.block{
+#panel-body_fix {
+    position: relative;
+    top: 100px;
+}
+
+#forget-form {
     width: 400px;
-    margin-left: 400px;
+    border: solid 2px #217093;
+    border-radius: 50px;
 }
 
-.title{
-    margin-bottom: 10px;
+#btn-reset {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
 }
 
-.title_name{
-    color: red;
-    font-size: 40px;
+.text-center {
+    color: #fff;
+}
+
+.sc-alert {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
 }
 
 

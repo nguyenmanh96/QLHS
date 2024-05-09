@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        schema::table('users',function (Blueprint $table){
+        Schema::table('users',function (Blueprint $table){
             $table->string('avatar',255)->default('default_avt.png')->change();
         });
     }
@@ -18,7 +18,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        schema::table('users',function (Blueprint $table){
+        Schema::table('users',function (Blueprint $table){
             $table->string('avatar',255)->default('public.default_avt.png')->change();
         });
     }

@@ -1,11 +1,7 @@
 @extends('layouts.student.layout')
 
 @section('content')
-    @if(session('success'))
-        <div id="successAlert" class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    @include('layouts._message')
     <div class="container mt-3">
             <h1>Trang cá nhân</h1>
         </div>
