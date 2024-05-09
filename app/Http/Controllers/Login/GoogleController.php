@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
 use Exception;
-use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Repository\UserRepository;
@@ -29,8 +28,7 @@ class GoogleController extends Controller
         try {
             $user = Socialite::driver('google')->stateless()->user();
             $googleToken = $user->id;
-            $findUser = $this->userRepository->findByGoogleToken($googleToken)->first();
-            Session::put('userinfo', $user->email);
+            $findUser = $this->userRepository->findByGoogleToken($googleToken);
 
             if (!$findUser) {
                 $userData = [

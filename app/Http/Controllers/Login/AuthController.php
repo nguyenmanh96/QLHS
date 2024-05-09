@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -35,7 +34,6 @@ class AuthController extends Controller
             'password' => $password,
         ])) {
             $user = Auth::user();
-            Session::put('userinfo',$user->email);
 
             if ($user->type == 'Admin') {
                 return redirect('admin/dashboard')->with('success', __('messages.welcome') . ' ' . $user->email);

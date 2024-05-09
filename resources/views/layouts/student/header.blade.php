@@ -10,7 +10,7 @@
                 <li class="nav-item">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{Session('userinfo')}}
+                            {{\Illuminate\Support\Facades\Auth::user()->email}}
                         </button>
                         <form action="{{route('logout')}}" method="POST" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @csrf
