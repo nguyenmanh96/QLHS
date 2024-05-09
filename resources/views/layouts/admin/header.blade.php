@@ -9,10 +9,12 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Tên Người Dùng
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            {{Session('userinfo')}}
                         </button>
-                        <form action="{{route('logout')}}" method="POST" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <form action="{{route('logout')}}" method="POST" class="dropdown-menu"
+                              aria-labelledby="dropdownMenuButton">
                             @csrf
                             <button type="submit" class="dropdown-item" href="#">Logout</button>
                         </form>

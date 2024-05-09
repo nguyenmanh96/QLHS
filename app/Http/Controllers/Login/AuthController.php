@@ -18,8 +18,14 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => ['required', 'email', 'max:255'],
-            'password' => 'required',
-        ]);
+            'password' => ['required'],
+        ],
+            [
+                'email.required' => __('validation.email_required'),
+                'email.email' => __('validation.email_email'),
+                'email.max' => __('validation.email_max', ['max' => 255]),
+                'password.required' => __('validation.password_required'),
+            ]);
 
         $email = $request->input('email');
         $password = $request->input('password');
@@ -29,17 +35,17 @@ class AuthController extends Controller
             'password' => $password,
         ])) {
             $user = Auth::user();
-            Session::put('userinfo', $email);
+            Session::put('userinfo',$user->email);
 
             if ($user->type == 'Admin') {
-                return redirect()->route('admin-dashboard')->with('success', 'Chào mừng ' . ' ' . $user->email);
+                return redirect('admin/dashboard')->with('success', __('messages.welcome') . ' ' . $user->email);
             } elseif ($user->type == 'Student') {
-                return redirect()->route('student-dashboard')->with('success', 'Chào mừng sinh viên' . ' ' . $user->email);
+                return redirect('students')->with('success', __('messages.welcome_st') . ' ' . $user->email);
             }
         }
+
         return redirect()->back()->with([
             'error' => __('messages.login_fail'),
-            'form_data' => $request->only('email')
-        ]);
+        ])->withInput($request->only('email','password'));
     }
 }

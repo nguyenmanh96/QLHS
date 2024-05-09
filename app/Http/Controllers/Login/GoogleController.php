@@ -6,12 +6,19 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Repository\UserRepository;
 
 
 class GoogleController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->with(["prompt" => "select_account"])->redirect();
@@ -21,30 +28,28 @@ class GoogleController extends Controller
     {
         try {
             $user = Socialite::driver('google')->stateless()->user();
-            $findUser = User::where('google_token', $user->id)->first();
-            Session::put('userinfo',$user->email);
+            $googleToken = $user->id;
+            $findUser = $this->userRepository->findByGoogleToken($googleToken)->first();
+            Session::put('userinfo', $user->email);
 
-            if ($findUser) {
-                Auth::login($findUser);
-
-                return redirect()->intended('/students')->with([
-                    'success' => 'Chào mừng sinh viên ' . ' ' . $user->email,
-                ]);
-            } else {
-                $newUser = User::create([
+            if (!$findUser) {
+                $userData = [
                     'email' => $user->email,
                     'google_token' => $user->id,
                     'password' => bcrypt('motdentam'),
                     'type' => 'Student'
-                ]);
-
-                Auth::login($newUser);
-
-                return redirect()->intended('/students')->with('success', 'Chào mừng sinh viên ' . ' ' . $newUser->email);
+                ];
+                $findUser = $this->userRepository->create($userData);
             }
 
+            Auth::login($findUser);
+
+            return redirect()->intended('/students')->with([
+                'success' => __('messages.welcome') . ' ' . $user->email,
+            ]);
+
         } catch (Exception $e) {
-            dd($e->getMessage());
+            return $e->getMessage();
         }
     }
 }

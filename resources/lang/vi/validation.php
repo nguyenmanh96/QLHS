@@ -1,7 +1,11 @@
 <?php
 
 return [
-    'The email field must be a valid email address.' => 'Địa chỉ email không hợp lệ.',
-    'The email field is required.' => 'Nhập địa chỉ mail.',
-    'The password field is required.' => 'Nhập mật khẩu.'
+    'email_email' => 'Địa chỉ email không hợp lệ.',
+    'email_required' => 'Nhập địa chỉ mail.',
+    'email_max' => 'Email không thể quá :max ký tự.',
+    'password_required' => 'Nhập mật khẩu.',
+    'password_string' => 'Mật khẩu chứa ký tự không hợp lệ.',
+    'password_min' => 'Mật khẩu phải có ít nhất :min ký tự.',
+    'password_max' => 'Mật khẩu tối đa :max ký tự ',
 ];

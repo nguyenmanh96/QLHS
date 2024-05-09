@@ -11,7 +11,7 @@ class AuthenticateLogout
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::logout());
+        if (Auth::logout()) ;
 
         return $next($request);
     }

@@ -171,11 +171,11 @@
             @csrf
             <div class="inputGroup inputGroup1">
                 <label for="loginEmail" id="loginEmailLabel">Email</label>
-                <input type="email" id="loginEmail" name="email" maxlength="255"/>
+                <input type="email" id="loginEmail" name="email" maxlength="255" value="{{ old('email') }}"/>
             </div>
             <div class="inputGroup inputGroup2">
                 <label for="loginPassword" id="loginPasswordLabel">{{__('messages.password')}}</label>
-                <input type="password" id="loginPassword" name="password"/>
+                <input type="password" id="loginPassword" name="password" value="{{ old('password') }}"/>
                 <label id="showPasswordToggle" for="showPasswordCheck">
                     <input id="showPasswordCheck" type="checkbox"/>
                     <div class="indicator"></div>

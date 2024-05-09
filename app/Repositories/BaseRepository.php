@@ -25,7 +25,7 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function create(array $attributes)
     {
-        return $this->model::create($attributes);
+        return $this->model->create($attributes);
     }
 
     public function update($id, array $attributes)

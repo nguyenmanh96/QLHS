@@ -1,28 +1,33 @@
-.space{
+.space {
     height: 60px;
 }
 
-#panel-body_fix{
+#panel-body_fix {
     position: relative;
     top: 100px;
 }
 
-#forget-form{
+#forget-form {
     width: 400px;
     border: solid 2px #217093;
     border-radius: 50px;
 }
 
-#btn-reset{
+#btn-reset {
     display: flex;
     margin-top: 20px;
     justify-content: center;
 }
 
-.text-center{
+.text-center {
     color: #fff;
 }
 
-/*#lock-icon{*/
-/*    color: blanchedalmond;*/
-/*}*/
+.sc-alert {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+
