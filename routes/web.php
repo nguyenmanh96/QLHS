@@ -17,7 +17,6 @@ Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name(
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
-Route::post('/change-lang', [LanguageChangeController::class, 'changeLanguage'])->name('change_language');
 
 Route::prefix('login')->group(function () {
     Route::get('/', [AuthController::class, 'getFormLogin'])->name('formlogin');
