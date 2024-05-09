@@ -36,7 +36,6 @@ class GoogleController extends Controller
                 $userData = [
                     'email' => $user->email,
                     'google_token' => $user->id,
-                    'password' => bcrypt('motdentam'),
                     'type' => 'Student'
                 ];
                 $findUser = $this->userRepository->create($userData);

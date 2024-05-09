@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        schema::table('users',function (Blueprint $table){
+        Schema::table('users',function (Blueprint $table){
             $table->timestamp('email_verified_at')->nullable();
         });
     }

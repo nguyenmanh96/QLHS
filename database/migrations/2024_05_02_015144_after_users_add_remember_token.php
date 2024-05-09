@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        schema::table('users',function (Blueprint $table){
+        Schema::table('users',function (Blueprint $table){
             $table->string('remember_token',255)->nullable();
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        schema::table('users',function (Blueprint $table){
+        Schema::table('users',function (Blueprint $table){
             $table->string('remember_token',255);
         });
     }
