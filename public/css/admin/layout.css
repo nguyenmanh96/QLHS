@@ -1,31 +1,630 @@
-#successAlert{
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-size: 1.2em;
+    background-color: #0d1d2b;
+    background-size: cover;
+    background-repeat: round;
+    background-image: url('http://qlhs.com/anh-may-hoat-hinh.jpg');
+}
+
+.nav-title {
+    display: flex;
+    justify-content: space-between;
+    height: 81px;
+    color: #FFFFFF;
+}
+
+.logo_title {
+    margin: 0px 0px 0px 10px;
+
+}
+
+.logo_name {
+    font-style: initial;
+    color: #FFFFFF;
+    font-size: 50px;
+    position: relative;
+    top: -6px;
+    font-weight: bolder;
+    font-family: cursive;
+}
+
+.form-lang {
+    position: relative;
+    top: 17px;
+    right: 25px;
+}
+
+.action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    position: relative;
+    top: -7px;
+    right: -28px;
+    border-radius: 14px;
+    width: 96.5%;
+    border: solid 1px #217093;
+    box-shadow: 1px 2px 3px 1px;
+}
+
+.action .profile {
+    text-align: center;
+    width: 60px;
+    height: 63px;
+    border-radius: 20%;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    right: 11px;
+}
+
+.action .profile img {
+    position: relative;
+    top: 11px;
+    width: 48px;
+    height: 41px;
+    border-radius: 20%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.action .menu {
+    z-index: 1;
+    width: 200px;
+    position: absolute;
+    top: 53px;
+    right: 58px;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    transition: .5s;
+    visibility: hidden;
+    opacity: 0;
+    color: #217093;
+    height: 100px;
+}
+
+.action .menu.active {
+    border: solid 1px;
+    right: 10px;
+    visibility: visible;
+    opacity: 1;
+    width: 212px;
+    height: 100px;
+}
+
+.menu_btn-logout {
+    background-color: #4eb8dd;
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 0.375rem;
+    color: #FFFFFF;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: default;
+    z-index: 0;
+    line-height: 2.6em;
+    font-size: 1rem;
+}
+
+.btn-default {
+    color: #99a9b8;
+    text-shadow: none;
+    border: 1px solid #070e14;
+}
+
+.atom-panel {
+    height: 75%;
+    border: solid 1px #217093;
+    border-radius: 0 17px 17px 0;
+}
+
+.atom-panel--dark {
+    background-color: #0d1d2b;
+}
+
+.atom-panel--light {
+    background-color: #172E42;
+}
+
+.atom-panel--left {
+    height: 100%;
+    border: solid 1px #217093;
+    border-radius: 0 14px 14px 0;
+    box-shadow: 1px 2px 3px 1px;
+}
+
+.atom-toolbar {
+    border-radius: 0 14px 14px 0;
+    color: #99a9b8;
+    display: flex;
+    justify-content: flex-start;
+    background-color: whitesmoke;
+    border: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    line-height: 40px;
+    width: 0px;
+    transition: width 0.4s cubic-bezier(0, 1.15, 1, 0.93);
+}
+
+.atom-toolbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: unset;
+}
+
+.atom-toolbar::-webkit-scrollbar {
+    width: 6px;
+    background-color: unset;
+}
+
+.atom-toolbar::-webkit-scrollbar-thumb {
+    background-color: #0a1b29;
+    border-radius: 5px;
+    opacity: .3;
+}
+
+.atom-toolbar.atom-toolbar-vertical {
+    height: 100%;
+}
+
+.atom-toolbar.expanded {
+    width: 240px;
+}
+
+.atom-toolbar .btn {
+    flex: 0 0 auto;
+    margin: 2px;
+    padding: 0;
+    background-color: #4eb8dd;
+    background-image: none;
+    border-color: #132637;
+    height: 50px;
+    min-width: 50px;
+}
+
+.atom-toolbar .btn:hover {
+    color: #d5dce2;
+    background-image: linear-gradient(#217093, #217093);
+    border: 1px solid #070e14;
+}
+
+.atom-toolbar .btn:focus {
+    color: #99a9b8;
+    text-decoration: none;
+    background-color: #217093;
+    box-shadow: none;
+}
+
+.atom-toolbar .btn:hover:focus {
+    color: #99a9b8;
+    background-color: #217093;
+}
+
+.atom-toolbar.atom-toolbar-vertical .atom-toolbar-spacer {
+    margin: .5em 5px;
+    border: 0 none;
+    border-bottom: 1px solid #1f3e59;
+    border-top: 1px solid #070e14;
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), #000000, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+
+.atom-toolbar.expanded .btn {
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    text-align: left;
+    font-weight: 900;
+    padding: 5px;
+    margin-top: 34px;
+    width: 220px;
+}
+
+.atom-toolbar .btn .title {
     display: none;
 }
 
-#successAlert.show {
-    display: block;
+.atom-toolbar.expanded .btn .title {
+    display: inline-block;
 }
 
-.card {
-    height: calc(100vh - 56px);
-    overflow-y: auto;
+.atom-toolbar .btn .octicon {
+    font-size: 24px;
+    width: 26px;
 }
 
-.card-title {
-    font-size: 1.2rem;
-    font-weight: bold;
+.atom-toolbar.expanded .btn .octicon {
+    margin-right: 5px;
 }
 
-.list-group-item {
-    border: none;
-    padding: 5px 10px;
+.atom-toolbar .atom-toolbar-toggle-button.left {
+    margin-left: -2px;
+    top: 47%;
+    height: 99px;
+    width: 18px;
+    box-shadow: 2px 2px 0px 1px black;
+    border-radius: 7px;
 }
 
-.list-group-item a {
-    text-decoration: none;
-    color: red;
+.atom-toolbar.expanded .atom-toolbar-toggle-button.left {
+    box-shadow: 2px 2px 0px 1px black;
+    margin-left: -2px;
+    top: 47%;
+    height: 99px;
+    width: 18px;
+    border-radius: 7px;
 }
 
-.list-group-item a:hover {
-    text-decoration: underline;
+.atom-toolbar-toggle-button {
+    left: 0px;
+    transition: left 0.4s cubic-bezier(0, 1.15, 1, 0.93);
+}
+
+.atom-toolbar-toggle-button.expanded {
+    left: 242px;
+}
+
+.atom-toolbar-toggle-button.left, .atom-toolbar-toggle-button.right {
+    width: 25px;
+}
+
+.atom-toolbar .atom-toolbar-toggle-button .atom-toolbar-toggle-button-inner span:before {
+    content: '\f078';
+}
+
+.atom-toolbar.expanded .atom-toolbar-toggle-button .atom-toolbar-toggle-button-inner span:before {
+    content: '\f0a4';
+}
+
+.atom-toolbar-toggle-button {
+    position: absolute;
+    overflow: hidden;
+    z-index: 11;
+    width: 50px;
+    height: 50px;
+}
+
+.atom-toolbar-toggle-button:not(.atom-toolbar-toggle-button-visible) .atom-toolbar-toggle-button-inner.left {
+    transform: translateX(-50%);
+}
+
+.atom-toolbar-toggle-button:not(.atom-toolbar-toggle-button-visible) .atom-toolbar-toggle-button-inner {
+    transition: transform 0.4s ease-out 0.1s;
+}
+
+.atom-toolbar-toggle-button .atom-toolbar-toggle-button-inner.left {
+    right: 0;
+}
+
+.atom-toolbar-toggle-button .atom-toolbar-toggle-button-inner {
+    background-color: whitesmoke;
+    border: solid 1px #217093;
+    transition: transform 0.2s ease-out 0s;
+}
+
+.atom-toolbar-toggle-button .atom-toolbar-toggle-button-inner {
+    width: 35px;
+    height: 100px;
+    border-radius: 7px;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    will-change: transform;
+}
+
+.atom-icon {
+    position: relative;
+    right: -10px;
+}
+
+.dashboard-layout {
+    display: flex;
+    height: 83%;
+}
+
+.menu_form-lang {
+    display: grid;
+    align-content: space-around;
+    height: 100%;
+}
+
+.dashboard_container {
+    position: relative;
+    margin-right: 25px;
+    margin-left: 25px;
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    border: solid 1px #217093;
+    border-radius: 14px;
+    box-shadow: 1px 2px 3px 1px;
+}
+
+.time {
+    position: relative;
+    left: 32px;
+    font-family: cursive;
+    font-size: 30px;
+    color: #217093;
+}
+
+.weather-info {
+    display: flex;
+    height: 40.99px;
+    font-family: fantasy;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
+.weather-info_image {
+    position: relative;
+    height: 61px;
+    width: 66px;
+    top: -11px;
+}
+
+.span-space {
+    border-left: solid 2px #217093;
+    width: 32px;
+    height: 60px;
+}
+
+.sky {
+    border: solid 9px #4eb8dd;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: currentColor;
+    position: absolute;
+    border-radius: 12px;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+}
+
+@keyframes starFall {
+    from {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.moon {
+    background-color: #39beff;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.moon-hi {
+    font-family: cursive;
+    z-index: 1;
+    right: -58%;
+    height: 54px;
+    width: 288px;
+    top: 30%;
+    position: relative;
+    font-size: 35px;
+    text-align: center;
+    background-color: bisque;
+    border-radius: 54px;
+}
+
+.moon-hi::after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    width: 37px;
+    height: 29px;
+    background-color: bisque;
+    bottom: 4px;
+    left: 5px;
+}
+
+
+.crater {
+    background-color: #31b4ff;
+    height: 30px;
+    width: 31px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.crater:before {
+    content: "";
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    box-shadow: -5px 0 0 2px #1ca4f9;
+    top: 2px;
+    left: 7px;
+}
+
+.crater1 {
+    top: 47px;
+    left: 142px;
+    transform: scale(0.9);
+}
+
+.crater2 {
+    bottom: -16px;
+    left: 215px;
+    transform: scale(0.6);
+}
+
+.crater3 {
+    left: 15px;
+    transform: scale(0.75);
+}
+
+.crater4 {
+    left: 225px;
+    top: 121px;
+    transform: scale(1.18);
+}
+
+.crater5 {
+    left: 62px;
+    bottom: 33px;
+    transform: scale(0.65);
+}
+
+.shadow {
+    height: 300px;
+    width: 300px;
+    box-shadow: 21px 0 0 5px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    position: relative;
+    bottom: 157.5px;
+    right: 46px;
+}
+
+.eye {
+    background-color: #161616;
+    height: 21px;
+    width: 22px;
+    position: relative;
+    border-radius: 50%;
+}
+
+.eye-l {
+    bottom: 341px;
+    left: 101px;
+}
+
+.eye-r {
+    bottom: 364px;
+    left: 186px;
+}
+
+.mouth {
+    height: 10px;
+    width: 26px;
+    border: 3px solid #161616;
+    position: relative;
+    bottom: 352px;
+    left: 146px;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.blush {
+    background-color: #1ca4f9;
+    height: 7.5px;
+    width: 7.5px;
+    position: relative;
+    border-radius: 50%;
+}
+
+.blush1 {
+    bottom: 324px;
+    left: 127px;
+}
+
+.blush2 {
+    bottom: 336px;
+    left: 186px;
+}
+
+.orbit {
+    z-index: 0;
+    height: 293px;
+    width: 419px;
+    border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    animation: spin 11s infinite linear;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rocket {
+    background-color: aliceblue;
+    height: 50px;
+    width: 25px;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    left: -11px;
+    top: 115px;
+}
+
+.rocket:before {
+    content: "";
+    position: absolute;
+    background-color: #39beff;
+    height: 20px;
+    width: 55px;
+    border-radius: 50% 50% 0 0;
+    z-index: -1;
+    right: -15px;
+    bottom: 0;
+}
+
+.rocket:after {
+    content: "";
+    position: absolute;
+    background-color: #39beff;
+    height: 4px;
+    width: 15px;
+    border-radius: 0 0 2px 2px;
+    bottom: -4px;
+    left: 4.3px;
+}
+
+.window {
+    background-color: #151845;
+    height: 10px;
+    width: 10px;
+    border: 2px solid #b8d2ec;
+    border-radius: 50%;
+    position: relative;
+    top: 17px;
+    left: 5px;
 }

@@ -23,4 +23,9 @@ return [
     'rs_mess' => 'Chúng tôi không thể gửi mật khẩu cũ cho bạn được. Một liên kết duy nhất để đặt lại mật khẩu đã được tạo cho bạn. Để đặt lại mật khẩu của bạn, hãy nhấp vào liên kết sau và làm theo hướng dẫn',
     'not_found' => 'Không tìm thấy trang',
     'home' => 'Trang chủ',
+    'department_list' => 'Danh sách khoa',
+    'student_list' => 'Danh sách sinh viên',
+    'subject_list' => 'Danh sách môn học',
+    'quick_add' => 'Thêm nhanh',
+    'logout' => 'Đăng xuất',
 ];

@@ -10,11 +10,15 @@ class AuthController extends Controller
 {
     public function getFormLogin()
     {
+        if (Auth::check()){
+            return redirect()->back();
+        }
         return view('guest.login');
     }
 
     public function submitLogin(Request $request)
     {
+//        dd(Auth::user());
         $request->validate([
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required'],
@@ -38,7 +42,7 @@ class AuthController extends Controller
             if ($user->type == 'Admin') {
                 return redirect('admin/dashboard')->with('success', __('messages.welcome') . ' ' . $user->email);
             } elseif ($user->type == 'Student') {
-                return redirect('students')->with('success', __('messages.welcome_st') . ' ' . $user->email);
+                return redirect('student/dashboard')->with('success', __('messages.welcome_st') . ' ' . $user->email);
             }
         }
 
