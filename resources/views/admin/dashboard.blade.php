@@ -3,9 +3,9 @@
 @section('content')
     @include('layouts._message')
     <div class="sky">
-        <div class="moon-hi" >
-            <span>Hello </span>
-            <span>{{\Illuminate\Support\Facades\Auth::user()->type}}</span>
+        <div class="moon-hi">
+            <span>{{__('messages.hello')}} </span>
+            <span>{{Auth::user()->type}}</span>
         </div>
         <div class="moon">
             <div class="crater crater1"></div>
@@ -28,3 +28,28 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function createStar() {
+            const star = document.createElement("div");
+            star.className = "star";
+            star.style.left = Math.random() * window.innerWidth + "px";
+            star.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        function animateStars() {
+            setInterval(() => {
+                createStar();
+            }, 200);
+        }
+
+        animateStars();
+    </script>
+@endpush
+

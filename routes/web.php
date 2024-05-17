@@ -7,6 +7,7 @@ use App\Http\Controllers\Student\DashboardController;
 use App\Http\Controllers\Login\ForgotController;
 use App\Http\Controllers\Login\GoogleController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\Admin\DepartmentController;
 
 Route::get('/', function () {
     return redirect()->route('formlogin');
@@ -32,6 +33,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'adminDashboard'])->name('admin-dashboard');
     Route::get('/get-time', [AdminDashboardController::class, 'currentTime']);
     Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather']);
+    Route::prefix('/department-list')->group(function (){
+        Route::get('/',[DepartmentController::class,'departmentList'])->name('department-list');
+        Route::post('/add',[DepartmentController::class,'addDepartment'])->name('add-department');
+        Route::get('edit/{id}',[DepartmentController::class,'editDepartment'])->name('edit-department');
+        Route::put('update/{id}',[DepartmentController::class,'updateDepartment'])->name('update-department');
+        Route::delete('/{id}',[DepartmentController::class,'deleteDepartment'])->name('delete-department');
+    });
 });
 
 Route::prefix('students')->middleware(['auth'])->group(function () {

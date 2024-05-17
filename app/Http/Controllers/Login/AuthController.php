@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function getFormLogin()
     {
-        if (Auth::check()){
+        if (Auth::check()) {
             return redirect()->back();
         }
         return view('guest.login');
@@ -18,7 +18,6 @@ class AuthController extends Controller
 
     public function submitLogin(Request $request)
     {
-//        dd(Auth::user());
         $request->validate([
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required'],
@@ -48,6 +47,6 @@ class AuthController extends Controller
 
         return redirect()->back()->with([
             'error' => __('messages.login_fail'),
-        ])->withInput($request->only('email','password'));
+        ])->withInput($request->only('email', 'password'));
     }
 }

@@ -1,6 +1,6 @@
 <nav class="nav-title">
     <div class="logo_title">
-        <p class="logo_name">NEWWAVE</p>
+        <a class="logo_name" href="{{route('admin-dashboard')}}">NEWWAVE</a>
     </div>
     <div class="form-lang">
         <form class="lang_form" action="{{ url()->current() }}">
@@ -31,7 +31,7 @@
         <form class="menu_form-lang" action="{{route('logout')}}" method="POST">
             @csrf
             <h5 style="text-align: center"> {{Auth::user()->email}}</h5>
-            <button class="menu_btn-logout" type="submit" >{{__('messages.logout')}}</button>
+            <button class="menu_btn-logout" type="submit">{{__('messages.logout')}}</button>
         </form>
     </div>
 </div>
@@ -40,11 +40,11 @@
     <div class="dashboard-atom">
         <div class="atom-panel atom-panel--left left">
             <nav class="atom-toolbar atom-toolbar-vertical expanded">
-                <a href="#" class="btn btn-default">
+                <a href="{{route('department-list')}}" class="btn btn-default">
                     <span class="octicon octicon-terminal"></span>
                     <span class="title">{{__('messages.department_list')}}</span>
                 </a>
-                <a href="#" class="btn btn-default">
+                <a href="" class="btn btn-default">
                     <span class="octicon octicon-telescope"></span>
                     <span class="title">{{__('messages.subject_list')}}</span>
                 </a>
@@ -72,6 +72,7 @@
         @yield('content')
     </div>
 </div>
+
 
 
 

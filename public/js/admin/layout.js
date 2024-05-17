@@ -53,7 +53,7 @@ $(document).ready(function () {
                 $('#weather-location').html(data.location.name);
                 $('#weather-temp_c').html(data.current.temp_c + '°C');
                 var weatherImage = data.current.condition.icon;
-                $('#weather-image').attr('src',weatherImage);
+                $('#weather-image').attr('src', weatherImage);
 
                 var localDate = data.location.localtime.split(' ')[0];
                 $('#weather-date').html(localDate);
@@ -68,25 +68,27 @@ $(document).ready(function () {
     updateWeather();
 });
 
-function createStar() {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    star.style.top = Math.random() * window.innerHeight + "px";
-    document.body.appendChild(star);
+$('.atom-toolbar.expanded .btn').click(function () {
+    $('atom-toolbar.expanded .btn').removeClass('active');
+    $(this).addClass('active');
+    localStorage.setItem('activeButton', $(this).attr('href'));
+});
 
-    setTimeout(() => {
-        star.remove();
-    }, 5000);
-}
+$(document).ready(function () {
+    var activeButton = localStorage.getItem('activeButton');
+    if (activeButton) {
+        $('.btn[href="' + activeButton + '"]').addClass('active');
+    }
+});
 
-function animateStars() {
-    setInterval(() => {
-        createStar();
-    }, 200);
-}
+$('.logo_name').click(function (event) {
+    event.preventDefault();
+    localStorage.removeItem('activeButton');
+    window.location.href = "http://qlhs.com/admin/dashboard";
+});
 
-animateStars();
+
+
 
 
 
