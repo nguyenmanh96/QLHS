@@ -47,5 +47,7 @@ return [
     'accept' => 'Accept',
     'update_ok' => 'Update successful!',
     'delete_ok' => 'Delete successful!',
+    'previous' => '&laquo; Previous',
+    'next' => 'Next &raquo;',
 ];
 

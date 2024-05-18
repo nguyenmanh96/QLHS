@@ -15,6 +15,12 @@ class DepartmentController extends Controller
         $this->departmentRepository = $departmentRepository;
     }
 
+    public function paginateDepartment()
+    {
+        $departments = $this->departmentRepository->paginate();
+        return view('admin.department', compact('departments'));
+    }
+
     public function departmentList()
     {
         $departments = $this->departmentRepository->getAll();
@@ -30,7 +36,7 @@ class DepartmentController extends Controller
         }
         $this->departmentRepository->createDepartment($request);
 
-        return redirect()->back()->with('success', __('messages.add_success'));
+        return redirect('admin/department')->with('success', __('messages.add_success'));
     }
 
     public function editDepartment($id)
@@ -44,14 +50,15 @@ class DepartmentController extends Controller
     {
         $this->departmentRepository->updateDepartment($request, $id);
 
-        return redirect()->route('department-list')->with('success', __('messages.update_ok'));
+        return redirect('admin/department')->with('success', __('messages.update_ok'));
     }
 
     public function deleteDepartment($id)
     {
         $this->departmentRepository->deleteDepartment($id);
 
-        return redirect()->route('department-list')->with('success', __('messages.delete_ok'));
+        return redirect('admin/department')->with('success', __('messages.delete_ok'));
     }
+
 
 }

@@ -682,3 +682,8 @@ body {
     top: 30%;
 }
 
+.paginate-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

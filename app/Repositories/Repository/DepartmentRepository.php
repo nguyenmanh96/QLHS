@@ -42,9 +42,9 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
     }
 
 
-    public function paginate($perPage = 10)
+    public function paginate($perPage = 3)
     {
-        return $this->paginate($perPage);
+        return $this->model->paginate($perPage);
     }
 
 }

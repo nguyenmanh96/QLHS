@@ -47,5 +47,7 @@ return [
     'accept' => 'Chấp nhận',
     'update_ok' => 'Cập nhật thành công!',
     'delete_ok' => 'Xóa thành công!',
+    'previous' => '&laquo; Trước',
+    'next' => 'Sau &raquo;',
 
 ];

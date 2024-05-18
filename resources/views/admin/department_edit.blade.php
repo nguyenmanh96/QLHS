@@ -22,7 +22,7 @@
                        value="{{ $department->created_at->format('Y-m-d') }}">
             </div>
 
-            <a href="{{ route('department-list') }}"
+            <a href="{{ redirect('admin/department')->getTargetUrl() }}"
                class="department-btn btn btn-secondary">{{__('messages.back')}}</a>
             <button type="submit" class="department-btn btn btn-primary">{{__('messages.save')}}</button>
         </form>

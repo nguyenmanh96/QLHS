@@ -40,7 +40,7 @@
     <div class="dashboard-atom">
         <div class="atom-panel atom-panel--left left">
             <nav class="atom-toolbar atom-toolbar-vertical expanded">
-                <a href="{{route('department-list')}}" class="btn btn-default">
+                <a href="{{ redirect('/admin/department')->getTargetUrl() }}" class="btn btn-default">
                     <span class="octicon octicon-terminal"></span>
                     <span class="title">{{__('messages.department_list')}}</span>
                 </a>

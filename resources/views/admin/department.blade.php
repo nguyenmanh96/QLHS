@@ -54,32 +54,35 @@
             @endforeach
             </tbody>
         </table>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#addDepartmentModal"
-                class="department-btn btn btn-warning">{{__('messages.add')}}</button>
-        <div class="modal fade" id="addDepartmentModal" tabindex="-1" aria-labelledby="addDepartmentModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="addDepartmentModalLabel">{{__('messages.add_department')}}</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{route('add-department')}}" method="POST" id="addDepartmentForm">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="departmentName"
-                                       class="form-label">{{__('messages.department_name')}}</label>
-                                <input type="text" class="form-control" id="departmentName" name="departmentName">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit"
-                                        class="department-btn btn btn-success">{{__('messages.save')}}</button>
-                            </div>
-                        </form>
+        <div class="paginate-btn">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addDepartmentModal"
+                    class="department-btn btn btn-warning">{{__('messages.add')}}</button>
+            <div class="modal fade" id="addDepartmentModal" tabindex="-1" aria-labelledby="addDepartmentModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="addDepartmentModalLabel">{{__('messages.add_department')}}</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{route('add-department')}}" method="POST" id="addDepartmentForm">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="departmentName"
+                                           class="form-label">{{__('messages.department_name')}}</label>
+                                    <input type="text" class="form-control" id="departmentName" name="departmentName">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit"
+                                            class="department-btn btn btn-success">{{__('messages.save')}}</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{ $departments->links('vendor.pagination.custom') }}
         </div>
     </div>
 @endsection
