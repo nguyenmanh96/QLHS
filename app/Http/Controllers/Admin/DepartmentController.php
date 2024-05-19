@@ -17,7 +17,8 @@ class DepartmentController extends Controller
 
     public function paginateDepartment()
     {
-        $departments = $this->departmentRepository->paginate();
+        $departments = $this->departmentRepository->paginate(5);
+
         return view('admin.department', compact('departments'));
     }
 
@@ -30,13 +31,25 @@ class DepartmentController extends Controller
 
     public function addDepartment(Request $request)
     {
-        $department = $request->departmentName;
-        if ($this->departmentRepository->departmentExists($department)) {
-            return redirect()->back()->with('error', __('messages.exists'));
-        }
-        $this->departmentRepository->createDepartment($request);
+        $request->validate([
+            'departmentName' => ['required', 'max:255']
+        ],
+            [
+                'departmentName.required' => __('validation.department_required'),
+                'departmentName.max:255' => __('validation.department_max'), ['max' => 255],
+            ]
+        );
 
-        return redirect('admin/department')->with('success', __('messages.add_success'));
+        if ($this->departmentRepository->departmentExists($request)) {
+
+            return response()->json(['error' => __('messages.dep-name_exists')]);
+        } else {
+
+            $this->departmentRepository->createDepartment($request);
+
+            return redirect('admin/department')->with('success', __('messages.add-dep_success'));
+        }
+
     }
 
     public function editDepartment($id)
@@ -48,6 +61,17 @@ class DepartmentController extends Controller
 
     public function updateDepartment(Request $request, $id)
     {
+        $request->validate([
+            'departmentName' => ['required', 'max:255'],
+        ], [
+                'departmentName.required' => __('validation.department_required'),
+                'departmentName.max:255' => __('validation.department_max'), ['max' => 255],
+            ]
+        );
+
+        if ($this->departmentRepository->departmentExists($request)) {
+            return redirect()->back()->with('error', __('messages.dep-name_exists'));
+        }
         $this->departmentRepository->updateDepartment($request, $id);
 
         return redirect('admin/department')->with('success', __('messages.update_ok'));
@@ -59,6 +83,5 @@ class DepartmentController extends Controller
 
         return redirect('admin/department')->with('success', __('messages.delete_ok'));
     }
-
 
 }

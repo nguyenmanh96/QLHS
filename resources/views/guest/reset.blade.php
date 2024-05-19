@@ -17,7 +17,7 @@
                           autocomplete="off"
                           class="form" method="POST">
                         @csrf
-                        @include('layouts._message')
+                        @include('_message')
                         <div class="form-group">
                             <div class="input-group" style="margin-bottom: 10px;">
                                 <input id="password" name="password" placeholder="{{__('messages.new_pw')}}"

@@ -17,34 +17,32 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
     public function createDepartment(Request $request)
     {
         return $this->create([
-            'name' => $request->departmentName
+            'name' => $request->input('departmentName')
         ]);
     }
 
     public function updateDepartment(Request $request, $id)
     {
-        $department = $this->getById($id);
-        $department->id = $request->input('id');
-        $department->name = $request->input('name');
-        $department->created_at = $request->input('created_at');
-        $department->save();
+        $department = [
+            'name' => $request->input('departmentName'),
+        ];
+
+        return $this->update($id, $department);
     }
 
     public function deleteDepartment($id)
     {
-        $department = $this->getById($id);
-        $department->delete();
+        return $this->delete($id);
     }
 
-    public function departmentExists($name)
+    public function departmentExists(Request $request)
     {
-        return $this->where('name', $name)->exists();
+        return $this->exists('name', $request->input('departmentName'));
     }
 
-
-    public function paginate($perPage = 3)
+    public function paginate($perPage)
     {
-        return $this->model->paginate($perPage);
+        return $this->pagination($perPage);
     }
 
 }

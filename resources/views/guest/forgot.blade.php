@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="sc-alert">
-                    @include('layouts._message')
+                    @include('_message')
                 </div>
                 <div class="panel-body" id="panel-body_fix">
                     <form action="{{route('send-link')}}" id="forget-form" role="form" autocomplete="off" class="form"

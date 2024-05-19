@@ -1,7 +1,7 @@
 @extends('layouts.admin.layout')
 
 @section('content')
-    @include('layouts._message')
+    @include('_message')
     <div class="sky">
         <div class="moon-hi">
             <span>{{__('messages.hello')}} </span>

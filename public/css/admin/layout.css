@@ -55,10 +55,10 @@ body {
     align-items: center;
     background-color: whitesmoke;
     position: relative;
-    top: -7px;
-    right: -28px;
+    top: -13px;
     border-radius: 14px;
-    width: 96.5%;
+    margin-left: 25px;
+    margin-right: 25px;
     border: solid 1px #217093;
     box-shadow: 1px 2px 3px 1px;
 }
@@ -645,19 +645,32 @@ body {
 }
 
 .department-title {
-    height: 82px;
+    height: 46px;
     font-size: 47px;
     font-weight: 900;
     font-family: system-ui;
+}
+
+.form-label.edit{
+    font-size: 17px;
 }
 
 .mt-4 {
     text-align: center;
 }
 
+tbody, td, tfoot, th, thead, tr{
+    height: 41px;
+    border-color: black !important;
+    border-style: solid !important;
+}
+
 .tr-flex {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    border-left: none !important;
+
 }
 
 .action-col {
@@ -682,7 +695,7 @@ body {
     top: 30%;
 }
 
-.paginate-btn{
+.table_footer{
     display: flex;
     align-items: center;
     justify-content: space-between;

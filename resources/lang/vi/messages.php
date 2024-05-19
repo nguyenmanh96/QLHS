@@ -37,8 +37,8 @@ return [
     'action' => 'Thao tác',
     'save' => 'Lưu',
     'add_department' => 'Thêm khoa',
-    'exists' => 'Khoa bạn muốn thêm đã tồn tại',
-    'add_success' => 'Tạo khoa mới thành công!',
+    'dep_exists' => 'Khoa bạn muốn thêm đã tồn tại',
+    'add-dep_success' => 'Tạo khoa mới thành công!',
     'edit_department' => 'Sửa thông tin khoa',
     'back' => 'Trở lại',
     'warning' => 'Cảnh báo',
@@ -49,5 +49,5 @@ return [
     'delete_ok' => 'Xóa thành công!',
     'previous' => '&laquo; Trước',
     'next' => 'Sau &raquo;',
-
+    'dep-name_exists' => 'Tên khoa đã tồn tại'
 ];
