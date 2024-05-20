@@ -28,14 +28,14 @@ Route::get('/reset/{token}', [ForgotController::class, 'getFormReset'])->name('f
 Route::post('/reset/{token}', [ForgotController::class, 'resetPassword'])->name('resetPassword');
 
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'adminDashboard'])->name('admin-dashboard');
     Route::get('/get-time', [AdminDashboardController::class, 'currentTime']);
     Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather']);
 });
 
-Route::prefix('students')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'Dashboard'])->name('student-dashboard');
+Route::prefix('student')->middleware(['auth'])->middleware('auth.user')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('student-dashboard');
 });
 
 
