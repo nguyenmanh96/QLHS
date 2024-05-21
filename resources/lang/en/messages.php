@@ -23,5 +23,10 @@ return [
     'rs_mess' => 'We cannot simply send you your old password. A unique link to reset your password has been generated for you. To reset your password, click the following link and follow the instructions',
     'not_found' => 'Page not found',
     'home' => 'Go Home',
+    'department_list' => 'Department List',
+    'student_list' => 'Student List',
+    'subject_list' => 'Subject List',
+    'quick_add' => 'Quick Add',
+    'logout' => 'Logout',
 ];
 

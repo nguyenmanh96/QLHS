@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function Dashboard(){
+    public function dashboard()
+    {
         return view('student.dashboard');
     }
 }
