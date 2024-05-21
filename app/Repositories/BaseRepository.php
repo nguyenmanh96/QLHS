@@ -40,8 +40,18 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->destroy($id);
     }
 
-    public function where($col, $val)
+    public function where($col, $value)
     {
-        return $this->model->where($col, $val);
+        return $this->model->where($col, $value);
+    }
+
+    public function exists($column, $value)
+    {
+        return $this->model->where($column, $value)->exists();
+    }
+
+    public function pagination($perPage)
+    {
+        return $this->model->paginate($perPage);
     }
 }

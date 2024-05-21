@@ -166,7 +166,7 @@
                 </svg>
             </div>
         </div>
-        @include('layouts._message')
+        @include('_message')
         <div>
             @csrf
             <div class="inputGroup inputGroup1">

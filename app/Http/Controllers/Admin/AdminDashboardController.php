@@ -28,7 +28,6 @@ class AdminDashboardController extends Controller
                 'aqi' => 'yes',
             ]
         ]);
-
         $data = json_decode($response->getBody(), true);
 
         return response()->json(['data' => $data]);

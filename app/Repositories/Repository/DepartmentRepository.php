@@ -5,6 +5,7 @@ namespace App\Repositories\Repository;
 use App\Models\Department;
 use App\Repositories\BaseRepository;
 use App\Repositories\Interface\DepartmentRepositoryInterface;
+use Illuminate\Http\Request;
 
 class DepartmentRepository extends BaseRepository implements DepartmentRepositoryInterface
 {
@@ -13,9 +14,35 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
         parent::__construct($department);
     }
 
-    public function paginate($perPage = 10)
+    public function createDepartment(Request $request)
     {
-        return $this->model->paginate($perPage);
+        return $this->create([
+            'name' => $request->input('departmentName')
+        ]);
+    }
+
+    public function updateDepartment(Request $request, $id)
+    {
+        $department = [
+            'name' => $request->input('departmentName'),
+        ];
+
+        return $this->update($id, $department);
+    }
+
+    public function deleteDepartment($id)
+    {
+        return $this->delete($id);
+    }
+
+    public function departmentExists(Request $request)
+    {
+        return $this->exists('name', $request->input('departmentName'));
+    }
+
+    public function paginate($perPage)
+    {
+        return $this->pagination($perPage);
     }
 
 }

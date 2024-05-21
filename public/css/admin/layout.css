@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
 * {
     box-sizing: border-box;
 }
@@ -34,7 +36,11 @@ body {
     position: relative;
     top: -6px;
     font-weight: bolder;
-    font-family: cursive;
+    text-decoration: none;
+}
+
+.logo_name:hover {
+    text-decoration: none;
 }
 
 .form-lang {
@@ -49,10 +55,10 @@ body {
     align-items: center;
     background-color: whitesmoke;
     position: relative;
-    top: -7px;
-    right: -28px;
+    top: -13px;
     border-radius: 14px;
-    width: 96.5%;
+    margin-left: 25px;
+    margin-right: 25px;
     border: solid 1px #217093;
     box-shadow: 1px 2px 3px 1px;
 }
@@ -123,6 +129,11 @@ body {
     z-index: 0;
     line-height: 2.6em;
     font-size: 1rem;
+}
+
+.atom-toolbar.expanded .btn.active {
+    background-color: #1f3e59 !important;
+    color: white !important;
 }
 
 .btn-default {
@@ -355,7 +366,6 @@ body {
     margin-left: 25px;
     width: 100%;
     height: 100%;
-    background-color: whitesmoke;
     border: solid 1px #217093;
     border-radius: 14px;
     box-shadow: 1px 2px 3px 1px;
@@ -364,7 +374,6 @@ body {
 .time {
     position: relative;
     left: 32px;
-    font-family: cursive;
     font-size: 30px;
     color: #217093;
 }
@@ -372,7 +381,6 @@ body {
 .weather-info {
     display: flex;
     height: 40.99px;
-    font-family: fantasy;
     width: 100%;
     justify-content: space-around;
     font-size: 30px;
@@ -397,7 +405,7 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: currentColor;
+    background-color: black;
     position: absolute;
     border-radius: 12px;
 }
@@ -435,7 +443,6 @@ body {
 }
 
 .moon-hi {
-    font-family: cursive;
     z-index: 1;
     right: -58%;
     height: 54px;
@@ -627,4 +634,69 @@ body {
     position: relative;
     top: 17px;
     left: 5px;
+}
+
+.container.department-body {
+    max-width: 100% !important;
+    padding: 20px;
+    height: 100%;
+    background-color: cornsilk;
+    border-radius: 14px;
+}
+
+.department-title {
+    height: 46px;
+    font-size: 47px;
+    font-weight: 900;
+    font-family: system-ui;
+}
+
+.form-label.edit{
+    font-size: 17px;
+}
+
+.mt-4 {
+    text-align: center;
+}
+
+tbody, td, tfoot, th, thead, tr{
+    height: 41px;
+    border-color: black !important;
+    border-style: solid !important;
+}
+
+.tr-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-left: none !important;
+
+}
+
+.action-col {
+    width: 227px;
+}
+
+.department-btn {
+    width: 100px;
+    background-image: none;
+}
+
+.btn-warning {
+    color: #fff !important;
+}
+
+.btn-warning:hover {
+    color: #fff !important;
+}
+
+.modal-dialog {
+    position: relative;
+    top: 30%;
+}
+
+.table_footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
