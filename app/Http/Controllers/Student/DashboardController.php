@@ -7,11 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function Dashboard()
+    public function dashboard()
     {
-        if (Auth::user()->type !== 'Student') {
-            return redirect()->back();
-        }
         return view('student.dashboard');
     }
 }

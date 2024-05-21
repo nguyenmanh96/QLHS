@@ -20,21 +20,12 @@ function padZero(num) {
 
 $(document).ready(function () {
     setInterval(function () {
-        $.ajax({
-            url: 'http://qlhs.com/admin/get-time',
-            method: 'GET',
-            success: function (data) {
-                var time = new Date(data.time);
-                var hour = time.getHours();
-                var minute = time.getMinutes();
-                var second = time.getSeconds();
+        var now = new Date()
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
 
-                $('#time').text(padZero(hour) + ":" + padZero(minute) + ":" + padZero(second));
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
-            }
-        });
+        $('#time').text(padZero(hour) + ":" + padZero(minute) + ":" + padZero(second));
     }, 1000);
 });
 
