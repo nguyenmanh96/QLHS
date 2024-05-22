@@ -31,10 +31,9 @@ Route::post('/reset/{token}', [ForgotController::class, 'resetPassword'])->name(
 
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'adminDashboard'])->name('admin-dashboard');
-    Route::get('/get-time', [AdminDashboardController::class, 'currentTime']);
-    Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather']);
+    Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather'])->name('get-weather');
     Route::prefix('/department')->group(function () {
-        Route::get('/', [DepartmentController::class, 'paginateDepartment']);
+        Route::get('/', [DepartmentController::class, 'paginate']);
         Route::get('/show', [DepartmentController::class, 'departmentList'])->name('department-list');
         Route::post('/add', [DepartmentController::class, 'addDepartment'])->name('add-department');
         Route::get('edit/{id}', [DepartmentController::class, 'editDepartment'])->name('edit-department');

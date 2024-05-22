@@ -49,6 +49,7 @@ return [
     'delete_ok' => 'Delete successful!',
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',
-    'dep-name_exists' => 'Department name already exists'
+    'dep-name_exists' => 'Department name already exists',
+    'dep_not_exists' => 'Department not exists',
 ];
 

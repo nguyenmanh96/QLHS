@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Validators\ValidatorDepartment;
 use App\Repositories\Repository\DepartmentRepository;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class DepartmentController extends Controller
         $this->departmentRepository = $departmentRepository;
     }
 
-    public function paginateDepartment()
+    public function paginate()
     {
         $departments = $this->departmentRepository->paginate(5);
 
@@ -31,26 +32,19 @@ class DepartmentController extends Controller
 
     public function addDepartment(Request $request)
     {
-        $request->validate([
-            'departmentName' => ['required', 'max:255']
-        ],
-            [
-                'departmentName.required' => __('validation.department_required'),
-                'departmentName.max:255' => __('validation.department_max'), ['max' => 255],
-            ]
-        );
+        ValidatorDepartment::validateDepartment($request->all());
 
         if ($this->departmentRepository->departmentExists($request)) {
 
-            return response()->json(['error' => __('messages.dep-name_exists')]);
+            return response()->json(['status' => false,'message' => __('messages.dep-name_exists')]);
         } else {
 
             $this->departmentRepository->createDepartment($request);
 
-            return redirect('admin/department')->with('success', __('messages.add-dep_success'));
+            return response()->json(['status' => true,'message' => __('messages.add-dep_success')]);
         }
-
     }
+
 
     public function editDepartment($id)
     {
@@ -61,13 +55,7 @@ class DepartmentController extends Controller
 
     public function updateDepartment(Request $request, $id)
     {
-        $request->validate([
-            'departmentName' => ['required', 'max:255'],
-        ], [
-                'departmentName.required' => __('validation.department_required'),
-                'departmentName.max:255' => __('validation.department_max'), ['max' => 255],
-            ]
-        );
+        ValidatorDepartment::validateDepartment($request->all());
 
         if ($this->departmentRepository->departmentExists($request)) {
             return redirect()->back()->with('error', __('messages.dep-name_exists'));
@@ -79,9 +67,12 @@ class DepartmentController extends Controller
 
     public function deleteDepartment($id)
     {
-        $this->departmentRepository->deleteDepartment($id);
+        if ($this->departmentRepository->idExists($id)){
+            $this->departmentRepository->deleteDepartment($id);
 
-        return redirect('admin/department')->with('success', __('messages.delete_ok'));
+            return redirect('admin/department')->with('success', __('messages.delete_ok'));
+        }
+        return redirect('admin/department')->with('error', __('messages.dep_not_exists'));
     }
 
 }

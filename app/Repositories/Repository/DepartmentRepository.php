@@ -23,11 +23,9 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
 
     public function updateDepartment(Request $request, $id)
     {
-        $department = [
+        return $this->update($id,[
             'name' => $request->input('departmentName'),
-        ];
-
-        return $this->update($id, $department);
+        ]);
     }
 
     public function deleteDepartment($id)
@@ -38,6 +36,11 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
     public function departmentExists(Request $request)
     {
         return $this->exists('name', $request->input('departmentName'));
+    }
+
+    public function idExists($id)
+    {
+        return $this->exists('id', $id);
     }
 
     public function paginate($perPage)

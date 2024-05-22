@@ -49,5 +49,6 @@ return [
     'delete_ok' => 'Xóa thành công!',
     'previous' => '&laquo; Trước',
     'next' => 'Sau &raquo;',
-    'dep-name_exists' => 'Tên khoa đã tồn tại'
+    'dep-name_exists' => 'Tên khoa đã tồn tại',
+    'dep_not_exists' => 'Khoa không tồn tại',
 ];
