@@ -26,7 +26,8 @@
                             <button type="submit"
                                     class="department-btn btn btn-primary">{{__('messages.edit')}}</button>
                         </form>
-                        <form class="delete_department-form" data-department-id="{{ $department['id'] }}" action="{{route('delete-department',$department['id'])}}" method="POST">
+                        <form class="delete_department-form" data-department-id="{{ $department['id'] }}"
+                              action="{{route('delete-department',$department['id'])}}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button type="button" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
@@ -98,38 +99,14 @@
         </div>
     </div>
 @endsection
-@push('scripts')
+@push('admin-scripts')
     <script>
-        $(document).ready(function (){
-            $('.delete_department-form').on('click',function (){
-                var departmentID = $(this).data('department-id');
-                var actionURL = "{{route('delete-department',':id')}}".replace(':id',departmentID);
-                $('#confirmDeleteFrom').attr('action',actionURL);
-            });
-        });
-
         $(document).ready(function () {
-            $('#addDepartmentForm').on('submit', function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('action'),
-                    method: $(this).attr('method'),
-                    data: $(this).serialize(),
-                    success: function (response) {
-                        if(response.status){
-                            sessionStorage.setItem('successMessages',response.message)
-                            window.location.href = '/admin/department';
-                        }else{
-                            $('#addDepartmentModal').find('.modal-alert_error').html('<div class="alert alert-danger">' + response.message + '</div>');
-                        }
-                    }
-                });
+            $('.delete_department-form').on('click', function () {
+                var departmentID = $(this).data('department-id');
+                var actionURL = "{{route('delete-department',':id')}}".replace(':id', departmentID);
+                $('#confirmDeleteFrom').attr('action', actionURL);
             });
         });
-        var successMessages =sessionStorage.getItem('successMessages');
-        if (successMessages){
-            $('#departmentBody').find('.alert-success').html('<div>'+successMessages+'</div>').show();
-            sessionStorage.removeItem('successMessages');
-        }
     </script>
 @endpush

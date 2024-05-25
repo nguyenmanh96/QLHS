@@ -5,7 +5,7 @@
     <div class="sky">
         <div class="moon-hi" >
             <span>Hello </span>
-            <span>{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+            <span>{{Auth::user()->sutdent->name}}</span>
         </div>
         <div class="moon">
             <div class="crater crater1"></div>

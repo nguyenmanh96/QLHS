@@ -4,7 +4,6 @@
     </div>
     <div class="form-lang">
         <form class="lang_form" action="{{ url()->current() }}">
-            @csrf
             <select id="form-lang-select" class="form-select" aria-label="Default select example" name="locale" onchange="this.form.submit()">
                 <option value="vi" {{ session('locale') == 'vi' ? 'selected' : '' }}>Tiếng Việt</option>
                 <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>

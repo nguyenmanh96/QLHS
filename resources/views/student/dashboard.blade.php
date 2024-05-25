@@ -2,37 +2,76 @@
 
 @section('content')
     @include('_message')
-    <div class="container mt-3">
-        <h1>Trang cá nhân</h1>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="info_edit" style="display: flex">
-                        <h5 class="card-title">Thông tin cá nhân</h5>
-                        <img class="avatar"
-                             src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" width="30"
-                             height="40" style="border-radius: 20px ">
+    <div class="container department-body" id="departmentBody">
+        <div class="alert alert-success" style="display: none"></div>
+        <h1 class="header-title">{{__('messages.profile')}}</h1>
+        <div class="student-profile py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-transparent text-center">
+                                <div class="alert alert-error" style="display: none"></div>
+                                <form action="{{route('change-image')}}" class="avatar" id="avatar" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <img src="{{asset('avatar/'.Auth::user()->avatar)}}" id="avatar-image"
+                                         class="avatar_img"  alt="avatar">
+                                    <div class="avatar_upload">
+                                        <label class="upload_label" for="upload">{{__('messages.upload')}}
+                                            <input type="file" id="upload" name="upload" onchange="this.form.submit()" >
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0"><strong class="pr-1">{{__('messages.st_id')}} :</strong>{{$student->id}}
+                                </p>
+                                <p class="mb-0"><strong class="pr-1">{{__('messages.st_name')}}
+                                        :</strong>{{$student->name}}</p>
+                                <p class="mb-0"><strong class="pr-1">{{__('messages.dob')}} :</strong>{{$student->dob}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="card-text">Name: </p>
-                    <p class="card-text">Email: </p>
-                    <p class="card-text">Student ID: </p>
-                    <a href="#" class="btn btn-primary">Sửa</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Danh sách môn học</h5>
-                    <ul class="list-group">
-                        <li class="list-group-item"> 1</li>
-                        <li class="list-group-item"> 2</li>
-                        <li class="list-group-item"> 3</li>
-                    </ul>
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-transparent border-0">
+                                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>{{__('messages.general_info')}}</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th width="30%">{{__('messages.gender')}}</th>
+                                        <td>{{__('messages.'.$student->gender)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">{{__('messages.academic_yeah')}}</th>
+                                        <td>2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">{{__('messages.country')}}</th>
+                                        <td>{{__('messages.country_name')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">{{__('messages.religion')}}</th>
+                                        <td>{{__('messages.religion_type')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">{{__('messages.admission_date')}}</th>
+                                        <td>{{explode(' ',$student->created_at)[0]}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('student-scripts')
+    <script>
+
+    </script>
+
+@endpush
