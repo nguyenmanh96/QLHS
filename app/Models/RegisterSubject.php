@@ -17,12 +17,12 @@ class RegisterSubject extends Model
         'status',
     ];
 
-    public function students()
+    public function student()
     {
         return $this->belongsToMany(Student::class);
     }
 
-    public function subjects(){
+    public function subject(){
         return $this->belongsToMany(Subject::class);
     }
 }

@@ -23,16 +23,16 @@ class Student extends Model
         return $this->hasOne(User::class);
     }
 
-    public function results(){
+    public function result(){
         return $this->hasMany(Result::class);
     }
 
 
-    public function departments(){
+    public function department(){
         return $this->belongsTo(Department::class);
     }
 
-    public function registerSubjects(){
+    public function registerSubject(){
         return $this->hasMany(RegisterSubject::class);
     }
 }

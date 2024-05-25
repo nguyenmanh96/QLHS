@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Student\DashboardController;
+use App\Http\Controllers\Student\StudentDashboardController;
 use App\Http\Controllers\Login\ForgotController;
 use App\Http\Controllers\Login\GoogleController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\AdminDepartmentController;
+use App\Http\Controllers\Student\StudentDepartmentController;
 
 Route::get('/', function () {
     return redirect()->route('formlogin');
@@ -29,21 +30,25 @@ Route::get('/reset/{token}', [ForgotController::class, 'getFormReset'])->name('f
 Route::post('/reset/{token}', [ForgotController::class, 'resetPassword'])->name('resetPassword');
 
 
-Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
-    Route::get('/dashboard', [AdminDashboardController::class, 'adminDashboard'])->name('admin-dashboard');
+Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin-dashboard');
     Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather'])->name('get-weather');
     Route::prefix('/department')->group(function () {
-        Route::get('/', [DepartmentController::class, 'paginate']);
-        Route::get('/show', [DepartmentController::class, 'departmentList'])->name('department-list');
-        Route::post('/add', [DepartmentController::class, 'addDepartment'])->name('add-department');
-        Route::get('edit/{id}', [DepartmentController::class, 'editDepartment'])->name('edit-department');
-        Route::put('update/{id}', [DepartmentController::class, 'updateDepartment'])->name('update-department');
-        Route::delete('/{id}', [DepartmentController::class, 'deleteDepartment'])->name('delete-department');
+        Route::get('/', [AdminDepartmentController::class, 'index'])->name('department-list');
+        Route::post('/add', [AdminDepartmentController::class, 'store'])->name('add-department');
+        Route::get('{id}/edit', [AdminDepartmentController::class, 'edit'])->name('edit-department');
+        Route::put('update/{id}', [AdminDepartmentController::class, 'update'])->name('update-department');
+        Route::delete('/{id}', [AdminDepartmentController::class, 'destroy'])->name('delete-department');
     });
 });
 
-Route::prefix('student')->middleware(['auth'])->middleware('auth.user')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('student-dashboard');
+Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
+    Route::get('/profile', [StudentDashboardController::class, 'index'])->name('profile');
+    Route::get('/get-weather', [StudentDashboardController::class, 'currentWeather'])->name('get-weather');
+    Route::post('/', [StudentDashboardController::class, 'changeImage'])->name('change-image');
+    Route::prefix('/department')->group(function () {
+        Route::get('/', [StudentDepartmentController::class, 'index'])->name('department-list');
+    });
 });
 
 

@@ -15,7 +15,7 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function getAll()
     {
-        return $this->model->all();
+        return $this->model->query();
     }
 
     public function getById($id)
@@ -50,7 +50,7 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->where($column, $value)->exists();
     }
 
-    public function pagination($perPage)
+    public function paginate($perPage)
     {
         return $this->model->paginate($perPage);
     }

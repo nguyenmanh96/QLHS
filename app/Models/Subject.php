@@ -15,15 +15,15 @@ class Subject extends Model
         'name',
         'department_id',
     ];
-    public function departments(){
+    public function department(){
         return $this->belongsTo(Department::class);
     }
 
-    public function registerSubjects(){
+    public function registerSubject(){
         return $this->hasMany(RegisterSubject::class);
     }
 
-    public function results(){
+    public function result(){
         return $this->hasMany(Result::class);
     }
 }

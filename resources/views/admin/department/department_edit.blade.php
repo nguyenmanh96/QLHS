@@ -6,11 +6,8 @@
         <form action="{{ route('update-department',$department->id)}}" method="POST">
             @csrf
             @method('PUT')
-
-            <div class="mb-3">
-                <label for="id" class="form-label edit">ID</label>
-                <input type="text" class="form-control" id="id" name="id" value="{{$department->id}}" disabled>
-            </div>
+                <input type="hidden" class="form-control" id="id" name="id" value="{{$department->id}}" >
+                <input type="hidden" class="form-control" name="type" value="{{$department->id}}" >
 
             <div class="mb-3">
                 <label for="name" class="form-label edit">{{__('messages.department_name')}}</label>

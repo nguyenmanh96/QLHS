@@ -15,11 +15,11 @@ class Department extends Model
         'name',
     ];
 
-    public function students(){
+    public function student(){
         return $this->hasMany(Student::class);
     }
 
-    public function subjects(){
+    public function subject(){
         return $this->hasMany(Subject::class);
     }
 }

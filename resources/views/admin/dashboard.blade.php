@@ -29,27 +29,9 @@
     </div>
 @endsection
 
-@push('scripts')
+@push('admin-scripts')
     <script>
-        function createStar() {
-            const star = document.createElement("div");
-            star.className = "star";
-            star.style.left = Math.random() * window.innerWidth + "px";
-            star.style.top = Math.random() * window.innerHeight + "px";
-            document.body.appendChild(star);
 
-            setTimeout(() => {
-                star.remove();
-            }, 5000);
-        }
-
-        function animateStars() {
-            setInterval(() => {
-                createStar();
-            }, 200);
-        }
-
-        animateStars();
     </script>
 @endpush
 
