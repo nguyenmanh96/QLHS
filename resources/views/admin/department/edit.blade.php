@@ -3,12 +3,10 @@
     <div class="container department-body">
         @include('_message')
         <h1 class="department-title mt-4">{{__('messages.edit_department')}}</h1>
-        <form action="{{ route('update-department',$department->id)}}" method="POST">
+        <form action="{{ route('update-department')}}" method="POST">
             @csrf
             @method('PUT')
                 <input type="hidden" class="form-control" id="id" name="id" value="{{$department->id}}" >
-                <input type="hidden" class="form-control" name="type" value="{{$department->id}}" >
-
             <div class="mb-3">
                 <label for="name" class="form-label edit">{{__('messages.department_name')}}</label>
                 <input type="text" class="form-control" id="departmentName" name="departmentName"
@@ -21,23 +19,23 @@
                        value="{{ $department->created_at->format('Y-m-d') }}" disabled>
             </div>
 
-            <a href="{{ redirect('admin/department')->getTargetUrl() }}"
+            <a href="{{ route('department-list') }}"
                class="department-btn btn btn-secondary">{{__('messages.back')}}</a>
             <button type="submit" class="department-btn btn btn-primary">{{__('messages.save')}}</button>
+            <button type="button" data-bs-toggle="modal"  data-bs-target="#confirmDeleteModal" class="department-btn btn btn-danger delete_department-btn">{{__('messages.delete')}}</button>
         </form>
-        <form action="{{ route('delete-department', $department->id) }}" method="POST" class="mt-3">
-            @csrf
-            @method('DELETE')
-            <button type="button" class="department-btn btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#confirmDeleteModal">{{__('messages.delete')}}
-            </button>
-            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
-                 aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirmDeleteModalLabel">{{__('messages.warning')}}</h5>
-                        </div>
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+             aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="confirmDeleteModalLabel">{{__('messages.warning')}}</h5>
+                    </div>
+                    <form action="{{route('delete-department')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" class="form-control" id="id" name="id" value="{{$department->id}}" >
                         <div class="modal-body">
                             <p>{{__('messages.ask_delete')}}</p>
                         </div>
@@ -47,9 +45,16 @@
                             <button type="submit"
                                     class="department-btn btn btn-danger">{{__('messages.accept')}}</button>
                         </div>
-                    </div>
+
+                    </form>
+
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+
+    </script>
+@endpush

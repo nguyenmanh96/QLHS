@@ -50,8 +50,4 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->where($column, $value)->exists();
     }
 
-    public function paginate($perPage)
-    {
-        return $this->model->paginate($perPage);
-    }
 }

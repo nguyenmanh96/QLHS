@@ -22,32 +22,26 @@
                     <td>{{$department['name']}}</td>
                     <td>{{$department['created_at']}}</td>
                     <td class="tr-flex">
-                        <form action="{{route('edit-department',$department['id'])}}" method="GET">
-                            <button type="submit"
-                                    class="department-btn btn btn-primary">{{__('messages.edit')}}</button>
-                        </form>
-                        <form class="delete_department-form" data-department-id="{{ $department['id'] }}" action="{{route('delete-department',$department['id'])}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                    class="department-btn btn btn-danger">{{__('messages.delete')}}</button>
-                        </form>
+                        <a href="{{route('edit-department',$department['id'])}}"
+                           class="department-btn btn btn-primary">{{__('messages.edit')}}</a>
+                        <button type="button" data-value="{{$department['id']}}" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" class="department-btn btn btn-danger delete_department-btn">{{__('messages.delete')}}</button>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <form action="" id="confirmDeleteFrom" method='Post'>
-            @method('DELETE')
-            @csrf
-            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
-                 aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title"
-                                id="confirmDeleteModalLabel">{{__('messages.warning')}}</h5>
-                        </div>
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+             aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="confirmDeleteModalLabel">{{__('messages.warning')}}</h5>
+                    </div>
+                    <form action="{{route('delete-department')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" id="id" name='id' value="">
                         <div class="modal-body">
                             <p>{{__('messages.ask_delete')}}</p>
                         </div>
@@ -57,11 +51,10 @@
                             <button type="submit"
                                     class="department-btn btn btn-danger">{{__('messages.accept')}}</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </form>
-
+        </div>
         <div class="table_footer">
             <button type="button" data-bs-toggle="modal" data-bs-target="#addDepartmentModal"
                     class="department-btn btn btn-warning">{{__('messages.add')}}</button>
@@ -100,36 +93,12 @@
 @endsection
 @push('scripts')
     <script>
-        $(document).ready(function (){
-            $('.delete_department-form').on('click',function (){
-                var departmentID = $(this).data('department-id');
-                var actionURL = "{{route('delete-department',':id')}}".replace(':id',departmentID);
-                $('#confirmDeleteFrom').attr('action',actionURL);
-            });
-        });
-
         $(document).ready(function () {
-            $('#addDepartmentForm').on('submit', function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('action'),
-                    method: $(this).attr('method'),
-                    data: $(this).serialize(),
-                    success: function (response) {
-                        if(response.status){
-                            sessionStorage.setItem('successMessages',response.message)
-                            window.location.href = '/admin/department';
-                        }else{
-                            $('#addDepartmentModal').find('.modal-alert_error').html('<div class="alert alert-danger">' + response.message + '</div>');
-                        }
-                    }
-                });
-            });
+            $('.delete_department-btn').click(function (e) {
+                e.preventDefault()
+                const department_id = $(this).data('value');
+                $('#id').val(department_id);
+            })
         });
-        var successMessages =sessionStorage.getItem('successMessages');
-        if (successMessages){
-            $('#departmentBody').find('.alert-success').html('<div>'+successMessages+'</div>').show();
-            sessionStorage.removeItem('successMessages');
-        }
     </script>
 @endpush
