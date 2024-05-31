@@ -9,6 +9,7 @@ use App\Http\Controllers\Login\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Admin\AdminDepartmentController;
 use App\Http\Controllers\Student\StudentDepartmentController;
+use App\Http\Controllers\Student\StudentSubjectController;
 
 Route::get('/', function () {
     return redirect()->route('formlogin');
@@ -33,21 +34,27 @@ Route::post('/reset/{token}', [ForgotController::class, 'resetPassword'])->name(
 Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin-dashboard');
     Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather'])->name('get-weather');
-    Route::prefix('/department')->group(function () {
+    Route::prefix('department')->group(function () {
         Route::get('/', [AdminDepartmentController::class, 'index'])->name('department-list');
         Route::post('/add', [AdminDepartmentController::class, 'store'])->name('add-department');
         Route::get('{id}/edit', [AdminDepartmentController::class, 'edit'])->name('edit-department');
-        Route::put('update/{id}', [AdminDepartmentController::class, 'update'])->name('update-department');
-        Route::delete('/{id}', [AdminDepartmentController::class, 'destroy'])->name('delete-department');
+        Route::put('/update', [AdminDepartmentController::class, 'update'])->name('update-department');
+        Route::delete('/delete', [AdminDepartmentController::class, 'destroy'])->name('delete-department');
     });
 });
 
 Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
     Route::get('/profile', [StudentDashboardController::class, 'index'])->name('profile');
     Route::get('/get-weather', [StudentDashboardController::class, 'currentWeather'])->name('get-weather');
-    Route::post('/', [StudentDashboardController::class, 'update'])->name('change-image');
+    Route::post('/', [StudentDashboardController::class, 'changeImage'])->name('change-image');
     Route::prefix('/department')->group(function () {
         Route::get('/', [StudentDepartmentController::class, 'index'])->name('department-list');
+    });
+    Route::prefix('/subject')->group(function () {
+        Route::get('/', [StudentSubjectController::class, 'index'])->name('subject-list');
+        Route::post('/', [StudentSubjectController::class, 'store'])->name('subject-list');
+
+
     });
 });
 

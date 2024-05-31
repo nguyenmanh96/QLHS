@@ -1,11 +1,11 @@
 @extends('layouts.student.layout')
 @section('content')
-    <div class="container department-body" id="departmentBody">
+    <div class="container content-body" id="departmentBody">
         <div class="alert alert-success" style="display: none">
 
         </div>
         @include('_message')
-        <h1 class="department-title mt-4">{{__('messages.department_list')}}</h1>
+        <h1 class="content-title mt-4">{{__('messages.department_list')}}</h1>
         <table class="table table-bordered mt-4">
             <thead>
             <tr>
@@ -27,7 +27,7 @@
         {{ $departments->links('vendor.pagination.custom') }}
     </div>
 @endsection
-@push('student-scripts')
+@push('scripts')
     <script>
 
     </script>

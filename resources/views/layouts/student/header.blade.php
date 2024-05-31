@@ -43,18 +43,9 @@
                     <span class="octicon octicon-terminal"></span>
                     <span class="title">{{__('messages.department_list')}}</span>
                 </a>
-                <a href="" class="btn btn-default">
+                <a href="{{redirect('/student/subject')->getTargetUrl()}}" class="btn btn-default">
                     <span class="octicon octicon-telescope"></span>
                     <span class="title">{{__('messages.subject_list')}}</span>
-                </a>
-                <a href="#" class="btn btn-default">
-                    <span class="octicon octicon-desktop-download"></span>
-                    <span class="title">{{__('messages.student_list')}}</span>
-                </a>
-                <hr class="atom-toolbar-spacer">
-                <a href="#" class="btn btn-default">
-                    <span class="octicon octicon-file-directory"></span>
-                    <span class="title">{{__('messages.quick_add')}}</span>
                 </a>
                 <div class="atom-toolbar-toggle-button left atom-toolbar-toggle-button-visible expanded">
                     <div class="atom-toolbar-toggle-button-inner left">

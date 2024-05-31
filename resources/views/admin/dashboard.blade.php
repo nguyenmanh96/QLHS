@@ -5,7 +5,7 @@
     <div class="sky">
         <div class="moon-hi" >
             <span>Hello </span>
-            <span>{{Auth::user()->sutdent->name}}</span>
+            <span>{{Auth::user()->email}}</span>
         </div>
         <div class="moon">
             <div class="crater crater1"></div>
@@ -28,10 +28,4 @@
         </div>
     </div>
 @endsection
-
-@push('admin-scripts')
-    <script>
-
-    </script>
-@endpush
 

@@ -22,8 +22,9 @@ class StudentSubjectController extends Controller
     public function index()
     {
         $departmentID = Auth::user()->student->department_id;
-        $subjects = $this->subjectRepository->where('department_id',$departmentID)->get()->paginate(2);
-        
+        $subjects = $this->subjectRepository->where('department_id',$departmentID)->with('registeredSubject')->get();
+
+//        dd($subjects);
 
         return view('student.subject', compact('subjects'));
 
@@ -34,7 +35,7 @@ class StudentSubjectController extends Controller
         $subject = $this->subjectRepository->getById($request['id']);
 
         $isRegistered = $subject->registeredSubject;
-        dd($isRegistered);
+//        dd($isRegistered);
 
 
 
@@ -50,6 +51,8 @@ class StudentSubjectController extends Controller
 
         return redirect('student/subject')->with('error', __('validation.already_registered'));
     }
+
+
 
 //    public function search(Request $request)
 //    {

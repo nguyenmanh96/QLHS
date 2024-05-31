@@ -8,7 +8,7 @@
         <h1 class="content-title mt-4">{{__('messages.subject_list')}}</h1>
         <div class="search">
             <div class="row" id="search">
-                <form id="search-form" action="{{route('search-result')}}" method="GET">
+                <form id="search-form" action="" method="GET">
                     <div class="form-group col-5">
                         <input name="search_keyword" value="{{old('search_keyword')}}" id="search_keyword" class="form-control" type="text" placeholder="Search" />
                     </div>
@@ -48,10 +48,10 @@
                     <th scope="row">{{$subject['id']}}</th>
                     <td>{{$subject['name']}}</td>
                     <td>{{$subject['department_id']}}</td>
-                    <td>{{$score = $subject->result->pluck('pivot')->first()->score ?? __('messages.grades_not_yet')}}</td>
-{{--                    @dd($subject->registeredSubject->pluck('pivot')->where('subject_id', $subject['id'])->first())--}}
+                    <td>{{$score = $subject->score ?? __('messages.grades_not_yet')}}</td>
+{{--                    @dd($subject)--}}
                     <td class="tr-flex">
-                        <form action="{{route('register-subject')}}" method="POST">
+                        <form action="" method="POST">
                             @csrf
                             <input type="hidden" id="id" name="id" value="{{$subject['id']}}">
                             <button type="submit"
@@ -64,7 +64,7 @@
             </tbody>
         </table>
         <div class="table_footer">
-            {{ $subjects->links('vendor.pagination.custom') }}
+{{--            {{ $subjects->links('vendor.pagination.custom') }}--}}
         </div>
     </div>
 @endsection

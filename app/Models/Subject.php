@@ -9,21 +9,25 @@ class Subject extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'sujects';
+    protected $table = 'subjects';
 
     protected $fillable = [
         'name',
         'department_id',
     ];
-    public function department(){
+    public function department()
+    {
         return $this->belongsTo(Department::class);
     }
 
-    public function registerSubject(){
-        return $this->hasMany(RegisterSubject::class);
+    public function registeredSubject()
+    {
+        return $this->belongsToMany(Student::class, 'register_subjects', 'subject_id', 'student_id')
+            ->withPivot('status');
     }
 
-    public function result(){
-        return $this->hasMany(Result::class);
+    public function result()
+    {
+        return $this->belongsToMany(Student::class,'results', 'subject_id', 'student_id')->withPivot('score');
     }
 }

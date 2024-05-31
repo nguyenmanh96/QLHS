@@ -19,20 +19,25 @@ class Student extends Model
     ];
 
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne(User::class);
     }
 
-    public function result(){
-        return $this->hasMany(Result::class);
+    public function result()
+    {
+        return $this->belongsToMany(Subject::class, 'results', 'student_id', 'subject_id')->withPivot('score');
     }
 
 
-    public function department(){
+    public function department()
+    {
         return $this->belongsTo(Department::class);
     }
 
-    public function registerSubject(){
-        return $this->hasMany(RegisterSubject::class);
+    public function registeredSubject()
+    {
+        return $this->belongsToMany(Subject::class, 'register_subjects', 'student_id', 'subject_id')
+            ->withPivot('status');
     }
 }

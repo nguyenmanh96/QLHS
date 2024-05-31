@@ -22,10 +22,10 @@ class ImageRequest extends FormRequest
     public function messages()
     {
         return [
-            'upload.required' => __('validate.img_required'),
-            'upload.image' => __('validate.img'),
-            'upload.mimes' => __('validate.img_mimes'),
-            'upload.max:2048' => __('validate.img_max'), ['max' => 2048],
+            'upload.required' => __('validation.img_required'),
+            'upload.image' => __('validation.img'),
+            'upload.mimes' => __('validation.img_mimes'),
+            'upload.max:2048' => __('validation.img_max'), ['max' => 2048],
         ];
     }
 }

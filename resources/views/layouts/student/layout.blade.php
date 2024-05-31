@@ -18,6 +18,6 @@
 
 @include('layouts.student.footer')
 </body>
-@stack('student-scripts')
+@stack('scripts')
 </html>
 

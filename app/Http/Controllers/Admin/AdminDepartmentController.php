@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Pagination;
 use App\Http\Controllers\Controller;
 use App\Repositories\Repository\DepartmentRepository;
 use Illuminate\Http\Request;
@@ -19,17 +20,14 @@ class AdminDepartmentController extends Controller
 
     public function index()
     {
-        $perPage = 3;
-        $departments = $this->departmentRepository->getAll()->paginate($perPage);
+        $departments = $this->departmentRepository->getAll()->paginate(Pagination::PERPAGE);
 
-        return view('admin.department.department', compact('departments'));
+        return view('admin.department.index', compact('departments'));
     }
 
     public function store(DepartmentNameRequest $request)
     {
-        $department = $request['departmentName'];
-
-        $this->departmentRepository->create(['name' => $department]);
+        $this->departmentRepository->create(['name' => $request['departmentName']]);
 
         return redirect('admin/department')->with('success', __('messages.add-dep_success'));
     }
@@ -39,13 +37,12 @@ class AdminDepartmentController extends Controller
     {
         $department = $this->departmentRepository->getByID($request['id']);
 
-        return view('admin.department.department_edit', compact('department'));
+        return view('admin.department.edit', compact('department'));
     }
 
     public function update(DepartmentNameRequest $request)
     {
-        $id = $request['id'];
-        $this->departmentRepository->update($id, ['name' => $request['departmentName']]);
+        $this->departmentRepository->update($request['id'], ['name' => $request['departmentName']]);
 
         return redirect('admin/department')->with('success', __('messages.update_ok'));
     }

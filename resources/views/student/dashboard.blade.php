@@ -1,8 +1,8 @@
 @extends('layouts.student.layout')
 
 @section('content')
-    @include('_message')
-    <div class="container department-body" id="departmentBody">
+    <div class="container content-body" id="departmentBody">
+        @include('_message')
         <div class="alert alert-success" style="display: none"></div>
         <h1 class="header-title">{{__('messages.profile')}}</h1>
         <div class="student-profile py-4">
@@ -42,7 +42,7 @@
                                 <table class="table table-bordered">
                                     <tr>
                                         <th width="30%">{{__('messages.gender')}}</th>
-                                        <td>{{__('messages.'.$student->gender)}}</td>
+                                        <td>{{__('messages.'.$student->code)}}</td>
                                     </tr>
                                     <tr>
                                         <th width="30%">{{__('messages.academic_yeah')}}</th>
@@ -69,7 +69,7 @@
         </div>
     </div>
 @endsection
-@push('student-scripts')
+@push('scripts')
     <script>
 
     </script>

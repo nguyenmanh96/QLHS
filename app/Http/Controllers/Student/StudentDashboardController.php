@@ -24,8 +24,7 @@ class StudentDashboardController extends Controller
 
     public function index()
     {
-        $loggedInUser = Auth::user();
-        $student = $loggedInUser->student;
+        $student = Auth::user()->student;
         return view('student.dashboard', compact('student'));
     }
 

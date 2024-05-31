@@ -14,8 +14,12 @@ class SubjectRepository extends BaseRepository implements SubjectRepositoryInter
         parent::__construct($subject);
     }
 
-    public function paginate($perPage = 10)
+    public function query()
     {
-        return $this->model->paginate($perPage);
+        return $this->model->query();
     }
+
+//    public function getScore(){
+//        return $this->model->with('register_subjects');
+//    }
 }

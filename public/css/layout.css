@@ -399,7 +399,8 @@ body {
     height: 60px;
 }
 
-.container.department-body {
+.container.content-body {
+    position: absolute;
     max-width: 100% !important;
     padding: 20px;
     height: 100%;
@@ -407,7 +408,7 @@ body {
     border-radius: 14px;
 }
 
-.department-title {
+.content-title {
     height: 46px;
     font-size: 47px;
     font-weight: 900;
@@ -423,7 +424,7 @@ body {
 }
 
 tbody, td, tfoot, th, thead, tr{
-    height: 41px;
+    height: 54px;
     border-color: black !important;
     border-style: solid !important;
 }
@@ -431,7 +432,6 @@ tbody, td, tfoot, th, thead, tr{
 .tr-flex {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     border-left: none !important;
 
 }
@@ -440,7 +440,7 @@ tbody, td, tfoot, th, thead, tr{
     width: 227px;
 }
 
-.department-btn {
+.content-btn {
     width: 100px;
     background-image: none;
 }
