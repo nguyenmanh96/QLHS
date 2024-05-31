@@ -21,11 +21,10 @@ class SubjectRequest extends FormRequest
                 'max:100',
                 'unique:subjects,name,' . $this->id,
             ],
-            'departmentId' => ['required','exists:departments,id']
+
+            'departmentId' => ['required', 'exists:departments,id']
         ];
-
     }
-
     public function messages(): array
     {
         return [
