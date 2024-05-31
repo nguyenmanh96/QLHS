@@ -24,9 +24,9 @@
 
 @if ($errors->any())
     <div id="validateAlert" class="alert alert-danger" style="height: auto">
-        <ul>
+        <ul style="margin-bottom: 0">
             @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
+                <li style="list-style: none">{{ $error }}</li>
             @endforeach
         </ul>
     </div>

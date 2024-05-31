@@ -28,7 +28,7 @@ return [
     'subject_list' => 'Subject List',
     'quick_add' => 'Quick Add',
     'logout' => 'Logout',
-    'order_number' => 'Order Number',
+    'order_number' => 'ID',
     'department_name' => 'Department Name',
     'subject_name' => 'Subject Name',
     'created_at' => 'Created At',

@@ -28,25 +28,6 @@ $(document).ready(function () {
     updateWeather();
 });
 
-function createStar() {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    star.style.top = Math.random() * window.innerHeight + "px";
-    document.body.appendChild(star);
-
-    setTimeout(() => {
-        star.remove();
-    }, 5000);
-}
-
-function animateStars() {
-    setInterval(() => {
-        createStar();
-    }, 200);
-}
-animateStars();
-
 $('.logo_name').click(function (event) {
     event.preventDefault();
     localStorage.removeItem('activeButton');
