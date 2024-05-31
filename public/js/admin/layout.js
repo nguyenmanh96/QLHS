@@ -1,34 +1,3 @@
-history.pushState(null, null, location.href);
-window.onpopstate = function () {
-    history.go(1);
-};
-
-$('.atom-toolbar-toggle-button').click(function () {
-    $('.atom-toolbar').toggleClass('expanded');
-    $(this).toggleClass('expanded');
-})
-
-const tap = document.querySelector('.profile');
-tap.addEventListener('click', function () {
-    const toggleMenu = document.querySelector('.menu');
-    toggleMenu.classList.toggle('active');
-});
-
-function padZero(num) {
-    return num < 10 ? "0" + num : num;
-}
-
-$(document).ready(function () {
-    setInterval(function () {
-        let now = new Date()
-        let hour = now.getHours();
-        let minute = now.getMinutes();
-        let second = now.getSeconds();
-
-        $('#time').text(padZero(hour) + ":" + padZero(minute) + ":" + padZero(second));
-    }, 1000);
-});
-
 $(document).ready(function () {
     function updateWeather() {
         $.ajax({
@@ -59,27 +28,27 @@ $(document).ready(function () {
     updateWeather();
 });
 
-$('.atom-toolbar.expanded .btn').click(function () {
-    $('atom-toolbar.expanded .btn').removeClass('active');
-    $(this).addClass('active');
-    localStorage.setItem('activeButton', $(this).attr('href'));
-});
+function createStar() {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(star);
 
-$(document).ready(function () {
-    var activeButton = localStorage.getItem('activeButton');
-    if (activeButton) {
-        $('.btn[href="' + activeButton + '"]').addClass('active');
-    }
-});
+    setTimeout(() => {
+        star.remove();
+    }, 5000);
+}
+
+function animateStars() {
+    setInterval(() => {
+        createStar();
+    }, 200);
+}
+animateStars();
 
 $('.logo_name').click(function (event) {
     event.preventDefault();
     localStorage.removeItem('activeButton');
     window.location.href = "http://qlhs.com/admin/dashboard";
 });
-
-
-
-
-
-

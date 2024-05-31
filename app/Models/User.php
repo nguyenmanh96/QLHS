@@ -26,7 +26,7 @@ class User extends Authenticatable implements CanResetPassword
 
     public function student()
     {
-        return $this->hasOne(Student::class);
+        return $this->belongsTo(Student::class);
     }
 }
 

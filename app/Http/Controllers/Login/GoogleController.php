@@ -41,7 +41,7 @@ class GoogleController extends Controller
 
             Auth::login($findUser);
 
-            return redirect()->intended('/student/dashboard')->with([
+            return redirect()->intended('/student/profile')->with([
                 'success' => __('messages.welcome') . ' ' . $user->email,
             ]);
 

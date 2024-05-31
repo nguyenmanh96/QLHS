@@ -42,12 +42,14 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
         Route::put('update', [AdminDepartmentController::class, 'update'])->name('update-department');
         Route::delete('/delete', [AdminDepartmentController::class, 'destroy'])->name('delete-department');
     });
-    Route::prefix('subject')->group(function () {
-        Route::get('/', [AdminSubjectController::class, 'index'])->name('subject-list');
-        Route::post('/add', [AdminSubjectController::class, 'store'])->name('add-subject');
-        Route::get('{id}/edit', [AdminSubjectController::class, 'edit'])->name('edit-subject');
-        Route::put('/update', [AdminSubjectController::class, 'update'])->name('update-subject');
-        Route::delete('/delete', [AdminSubjectController::class, 'destroy'])->name('delete-subject');
+});
+
+Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
+    Route::get('/profile', [StudentDashboardController::class, 'index'])->name('profile');
+    Route::get('/get-weather', [StudentDashboardController::class, 'currentWeather'])->name('get-weather');
+    Route::post('/', [StudentDashboardController::class, 'update'])->name('change-image');
+    Route::prefix('/department')->group(function () {
+        Route::get('/', [StudentDepartmentController::class, 'index'])->name('department-list');
     });
 });
 

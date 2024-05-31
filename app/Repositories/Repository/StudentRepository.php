@@ -13,8 +13,4 @@ class StudentRepository extends BaseRepository implements StudentRepositoryInter
         parent::__construct($student);
     }
 
-    public function paginate($perPage = 10)
-    {
-        return $this->model->paginate($perPage);
-    }
 }

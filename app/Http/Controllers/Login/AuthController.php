@@ -41,7 +41,7 @@ class AuthController extends Controller
             if ($user->type == 'Admin') {
                 return redirect('admin/dashboard')->with('success', __('messages.welcome') . ' ' . $user->email);
             } elseif ($user->type == 'Student') {
-                return redirect('student/dashboard')->with('success', __('messages.welcome_st') . ' ' . $user->email);
+                return redirect('student/profile')->with('success', __('messages.welcome_st') . ' ' . $user->email);
             }
         }
 
