@@ -11,8 +11,14 @@ return [
     'department_required' => 'Please enter the department name',
     'department_max' => 'The department name cannot exceed :max characters.',
     'department_unique' => 'Department already exists',
+    'sub_required' => 'Please enter the subject name',
+    'sub_max' => 'The subject name cannot exceed :max characters',
+    'sub_unique' => 'Subject already exists',
+    'depId_required' => 'Department ID is required',
+    'depId_exists' => 'Department ID does not exist',
     'img_required' => 'The image field is required',
     'img' => 'The image must be an image file',
     'img_mimes' => 'The image must be a file of type: :values',
     'img_max' => 'The image may not be greater than :max kilobytes',
+    'already_registered' => 'You have already registered'
 ];

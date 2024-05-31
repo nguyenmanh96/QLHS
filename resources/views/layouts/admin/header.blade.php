@@ -44,7 +44,7 @@
                     <span class="octicon octicon-terminal"></span>
                     <span class="title">{{__('messages.department_list')}}</span>
                 </a>
-                <a href="" class="btn btn-default">
+                <a href="{{redirect('admin/subject')->getTargetUrl()}}" class="btn btn-default">
                     <span class="octicon octicon-telescope"></span>
                     <span class="title">{{__('messages.subject_list')}}</span>
                 </a>

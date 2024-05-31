@@ -18,10 +18,10 @@ class Result extends Model
     ];
 
     public function student(){
-        return $this->belongsToMany(Student::class);
+        return $this->belongsTo(Student::class);
     }
 
     public function subject(){
-        return $this->belongsToMany(Result::class);
+        return $this->belongsTo(Result::class);
     }
 }
