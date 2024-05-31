@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 
 class AdminDashboardController extends Controller
 {
-    public function adminDashboard()
+    public function dashboard()
     {
         return view('admin.dashboard');
     }
 
     public function currentWeather()
     {
-        $dotenv = Dotenv::createImmutable(base_path());
-        $dotenv->load();
-        $apiKey = $_ENV['WEATHER_API'];
+        $apiKey = env('WEATHER_API');
         $city = 'Hanoi';
 
         $client = new Client();

@@ -9,5 +9,6 @@ return [
     'password_min' => 'The password must be at least :min characters',
     'password_max' => 'Maximum password is :max characters',
     'department_required' => 'Please enter the department name',
-    'department_max' => 'The department name cannot exceed :max characters.'
+    'department_max' => 'The department name cannot exceed :max characters.',
+    'department_unique' => 'Department already exists',
 ];

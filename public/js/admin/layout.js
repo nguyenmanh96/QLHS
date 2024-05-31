@@ -20,10 +20,10 @@ function padZero(num) {
 
 $(document).ready(function () {
     setInterval(function () {
-        var now = new Date()
-        var hour = now.getHours();
-        var minute = now.getMinutes();
-        var second = now.getSeconds();
+        let now = new Date()
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let second = now.getSeconds();
 
         $('#time').text(padZero(hour) + ":" + padZero(minute) + ":" + padZero(second));
     }, 1000);
@@ -55,7 +55,7 @@ $(document).ready(function () {
         });
     }
 
-    // setInterval(updateWeather, 5000);
+    setInterval(updateWeather, 5000);
     updateWeather();
 });
 

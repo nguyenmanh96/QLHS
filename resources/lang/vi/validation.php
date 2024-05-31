@@ -9,5 +9,6 @@ return [
     'password_min' => 'Mật khẩu phải có ít nhất :min ký tự',
     'password_max' => 'Mật khẩu tối đa :max ký tự',
     'department_required' => 'Hãy nhập tên khoa',
-    'department_max' => 'Tên khoa không thể quá :max ký tự'
+    'department_max' => 'Tên khoa không thể quá :max ký tự',
+    'department_unique' => 'Khoa đã tồn tại',
 ];

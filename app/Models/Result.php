@@ -17,11 +17,11 @@ class Result extends Model
         'score',
     ];
 
-    public function students(){
+    public function student(){
         return $this->belongsToMany(Student::class);
     }
 
-    public function subjects(){
+    public function subject(){
         return $this->belongsToMany(Result::class);
     }
 }
