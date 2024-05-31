@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\student\StudentSubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Login\ForgotController;
 use App\Http\Controllers\Login\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Admin\AdminDepartmentController;
+use App\Http\Controllers\Admin\AdminSubjectController;
 use App\Http\Controllers\Student\StudentDepartmentController;
 
 Route::get('/', function () {
@@ -33,12 +35,19 @@ Route::post('/reset/{token}', [ForgotController::class, 'resetPassword'])->name(
 Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin-dashboard');
     Route::get('/get-weather', [AdminDashboardController::class, 'currentWeather'])->name('get-weather');
-    Route::prefix('department')->group(function () {
+    Route::prefix('/department')->group(function () {
         Route::get('/', [AdminDepartmentController::class, 'index'])->name('department-list');
         Route::post('/add', [AdminDepartmentController::class, 'store'])->name('add-department');
         Route::get('{id}/edit', [AdminDepartmentController::class, 'edit'])->name('edit-department');
-        Route::put('/update', [AdminDepartmentController::class, 'update'])->name('update-department');
+        Route::put('update', [AdminDepartmentController::class, 'update'])->name('update-department');
         Route::delete('/delete', [AdminDepartmentController::class, 'destroy'])->name('delete-department');
+    });
+    Route::prefix('subject')->group(function () {
+        Route::get('/', [AdminSubjectController::class, 'index'])->name('subject-list');
+        Route::post('/add', [AdminSubjectController::class, 'store'])->name('add-subject');
+        Route::get('{id}/edit', [AdminSubjectController::class, 'edit'])->name('edit-subject');
+        Route::put('/update', [AdminSubjectController::class, 'update'])->name('update-subject');
+        Route::delete('/delete', [AdminSubjectController::class, 'destroy'])->name('delete-subject');
     });
 });
 
