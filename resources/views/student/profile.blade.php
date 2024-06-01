@@ -14,7 +14,7 @@
                                 <div class="alert alert-error" style="display: none"></div>
                                 <form action="{{route('change-image')}}" class="avatar" id="avatar" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <img src="{{asset('avatar/'.Auth::user()->avatar)}}" id="avatar-image"
+                                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" id="avatar-image"
                                          class="avatar_img"  alt="avatar">
                                     <div class="avatar_upload">
                                         <label class="upload_label" for="upload">{{__('messages.upload')}}
@@ -69,9 +69,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script>
-
-    </script>
-
-@endpush

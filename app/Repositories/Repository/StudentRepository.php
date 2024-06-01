@@ -13,4 +13,5 @@ class StudentRepository extends BaseRepository implements StudentRepositoryInter
         parent::__construct($student);
     }
 
+
 }

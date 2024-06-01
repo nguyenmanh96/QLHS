@@ -74,6 +74,8 @@ return [
     '2' => 'Female',
     'register' => 'Register',
     'reg_ok' => 'Registration successful!',
+    'already_registered' => 'You have already registered for this subject!',
+    'cannot_register'=>'Unable to register for this subject at this time!',
     'grades' => 'Grades',
     'grades_not_yet' => 'No grades yet',
 ];

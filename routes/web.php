@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\student\StudentSubjectController;
+use App\Http\Controllers\Student\StSubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\Student\StDepartmentController;
 use App\Http\Controllers\Login\ForgotController;
 use App\Http\Controllers\Login\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\SubjectController;
-use App\Http\Controllers\Student\StudentDepartmentController;
+use App\Http\Controllers\Student\ProfileController;
 
 Route::get('/', function () {
     return redirect()->route('formlogin');
@@ -52,15 +52,15 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
 });
 
 Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
-    Route::get('/profile', [StudentDashboardController::class, 'index'])->name('profile');
-    Route::get('/get-weather', [StudentDashboardController::class, 'currentWeather'])->name('get-weather');
-    Route::post('/', [StudentDashboardController::class, 'changeImage'])->name('change-image');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/get-weather', [ProfileController::class, 'currentWeather'])->name('get-weather');
+    Route::post('/', [ProfileController::class, 'update'])->name('change-image');
     Route::prefix('/department')->group(function () {
-        Route::get('/', [StudentDepartmentController::class, 'index'])->name('department-list');
+        Route::get('/', [StDepartmentController::class, 'index'])->name('st.department.list');
     });
     Route::prefix('/subject')->group(function () {
-        Route::get('/', [StudentSubjectController::class, 'index'])->name('subject-lis');
-        Route::post('/', [StudentSubjectController::class, 'store'])->name('subject-lis');
+        Route::get('/', [StSubjectController::class, 'index'])->name('st.subject.list');
+        Route::post('/', [StSubjectController::class, 'store'])->name('st.subject.register');
 
     });
 });

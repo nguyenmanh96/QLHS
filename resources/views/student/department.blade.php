@@ -27,8 +27,3 @@
         {{ $departments->links('vendor.pagination.custom') }}
     </div>
 @endsection
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

@@ -5,6 +5,7 @@ namespace App\Repositories\Repository;
 use App\Models\Subject;
 use App\Repositories\BaseRepository;
 use App\Repositories\Interface\SubjectRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 
 class SubjectRepository extends BaseRepository implements SubjectRepositoryInterface
@@ -19,7 +20,10 @@ class SubjectRepository extends BaseRepository implements SubjectRepositoryInter
         return $this->model->query();
     }
 
-//    public function getScore(){
-//        return $this->model->with('register_subjects');
-//    }
+    public function getSubjectList()
+    {
+        $departmentID = Auth::user()->student->department_id;
+        return $this->model->where('department_id', $departmentID)->with('registeredSubject', 'result');
+    }
+
 }

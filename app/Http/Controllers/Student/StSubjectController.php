@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Student;
 
 use App\Enums\Pagination;
 use App\Http\Controllers\Controller;
-use App\Repositories\Repository\RegisterSubjectRepository;
-use App\Repositories\Repository\ResultRepository;
 use Illuminate\Http\Request;
 use App\Repositories\Repository\SubjectRepository;
 use Illuminate\Support\Facades\Auth;
 
-class StudentSubjectController extends Controller
+class StSubjectController extends Controller
 {
     protected $subjectRepository;
 
@@ -21,35 +19,30 @@ class StudentSubjectController extends Controller
 
     public function index()
     {
-        $departmentID = Auth::user()->student->department_id;
-        $subjects = $this->subjectRepository->where('department_id',$departmentID)->with('registeredSubject')->get();
+        $subjects = $this->subjectRepository->getSubjectList()->paginate(Pagination::PERPAGE);
+        foreach ($subjects as $subject) {
+            $subject->status = $subject->registeredSubject->pluck('pivot')->firstWhere('student_id', Auth::user()->student->id)['status'] ?? null;
+            $subject->score = $subject->result->pluck('pivot')->firstWhere('student_id', Auth::user()->student->id)['score'] ?? null;
+        }
 
-//        dd($subjects);
-
-        return view('student.subject', compact('subjects'));
-
+        return view('student.subject', compact(['subjects']));
     }
 
     public function store(Request $request)
     {
         $subject = $this->subjectRepository->getById($request['id']);
+        $exist = $subject->registeredSubject()->where('student_id', Auth::user()->student->id)->exists();
+        $status = $subject->registeredSubject()->where(['student_id' => Auth::user()->student->id, 'status' => 'Registered'])->exists();
 
-        $isRegistered = $subject->registeredSubject;
-//        dd($isRegistered);
-
-
-
-        if ($isRegistered) {
-            $isRegistered->registeredSubject->updateOrCreate([
-                'student_id' => Auth::user()->student->id,
-                'status' => 'Registered',
-                'subject_id' => $request['id'],
-            ]);
-
-            return redirect('student/subject')->with('success', __('messages.reg_ok'));
+        if ($exist) {
+            if (!$status) {
+                $subject->registeredSubject()->where('student_id', Auth::user()->student->id)->update(['status' => 'Registered']);
+                return redirect('student/subject')->with('success', __('messages.reg_ok'));
+            }
+            return redirect('student/subject')->with('error', __('messages.already_registered'));
         }
 
-        return redirect('student/subject')->with('error', __('validation.already_registered'));
+        return redirect('student/subject')->with('error', __('messages.cannot_register'));
     }
 
 

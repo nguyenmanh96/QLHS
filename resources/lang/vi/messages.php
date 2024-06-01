@@ -74,6 +74,8 @@ return [
     '2' => 'Nữ',
     'register' => 'Đăng ký',
     'reg_ok' => 'Đăng ký thành công!',
+    'already_registered' => 'Bạn đã đăng ký môn học này rồi!',
+    'cannot_register'=>'Không thể đăng ký môn học này vào lúc này!',
     'grades' => 'Điểm số',
     'grades_not_yet' => 'Chưa có điểm',
 ];
