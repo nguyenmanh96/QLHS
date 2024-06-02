@@ -60,6 +60,8 @@ return [
     'st_name' => 'Student Name',
     'st_id' => 'Student ID',
     'upload' => 'Upload',
+    'upload_ok'=>'Upload successful!',
+    'upload_error'=>'Upload error',
     'academic_yeah' => 'Academic Year',
     'gender' => 'Render',
     'dob' => 'Date Of Birth',

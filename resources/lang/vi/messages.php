@@ -60,6 +60,8 @@ return [
     'st_name' => 'Tên sinh viên',
     'st_id' => 'Mã sinh viên',
     'upload' => 'Thay đổi',
+    'upload_ok'=>'Thay đổi ảnh thành công',
+    'upload_error'=>'Thay đổi ảnh bị lỗi',
     'academic_yeah' => 'Năm học',
     'gender' => 'Giới tính',
     'dob' => 'Ngày sinh',

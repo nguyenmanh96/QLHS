@@ -47,10 +47,10 @@ class ProfileController extends Controller
         if ($image = $request->file('upload')) {
             $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalExtension();
             $image->storeAs('avatar', $imageName, 'public');
-            Auth::user()->update(Auth::user()->id, ['avatar' => $imageName]);
+            Auth::user()->update(['avatar' => $imageName]);
 
-            return redirect('student/profile')->with('success', 'ok');
+            return redirect('student/profile')->with('success', __('messages.upload_ok'));
         }
-        return redirect('student/profile')->with('success', 'k duoc');
+        return redirect('student/profile')->with('success', __('messages.upload_error'));
     }
 }
