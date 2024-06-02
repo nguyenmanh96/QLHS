@@ -16,9 +16,9 @@ return [
     'sub_unique' => 'Môn học đã tồn tại',
     'depId_required' => 'Nhập mã khoa',
     'depId_exists' => 'Mã khoa không tồn tại',
-    'imag_required' => 'Trường ảnh là bắt buộc',
-    'imag_type' => 'Ảnh phải là tệp hình ảnh',
-    'imag_mimes' => 'Ảnh phải có định dạng: :values',
-    'imag_max' => 'Kích thước ảnh không được vượt quá :max kilobytes',
+    'img_required' => 'Trường ảnh là bắt buộc',
+    'img' => 'Phải là tệp hình ảnh',
+    'img_mimes' => 'Ảnh phải có định dạng: :values',
+    'img_max' => 'Kích thước ảnh không được vượt quá :max kilobytes',
     'already_registered' => 'Bạn đã đăng ký rồi'
 ];

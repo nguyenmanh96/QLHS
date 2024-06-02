@@ -13,22 +13,22 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Student\ProfileController;
 
 Route::get('/', function () {
-    return redirect()->route('formlogin');
+    return redirect()->route('formLogin');
 });
 
-Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google-login');
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::prefix('login')->group(function () {
-    Route::get('/', [AuthController::class, 'getFormLogin'])->name('formlogin');
+    Route::get('/', [AuthController::class, 'getFormLogin'])->name('formLogin');
     Route::post('/', [AuthController::class, 'submitLogin'])->name('login');
 });
 
-Route::get('/forgot', [ForgotController::class, 'getFormForgot'])->name('form-forgot');
-Route::post('/forgot', [ForgotController::class, 'sendResetPassword'])->name('send-link');
-Route::get('/reset/{token}', [ForgotController::class, 'getFormReset'])->name('form-reset');
+Route::get('/forgot', [ForgotController::class, 'getFormForgot'])->name('formForgot');
+Route::post('/forgot', [ForgotController::class, 'sendResetPassword'])->name('sendLink');
+Route::get('/reset/{token}', [ForgotController::class, 'getFormReset']);
 Route::post('/reset/{token}', [ForgotController::class, 'resetPassword'])->name('resetPassword');
 
 
@@ -53,15 +53,15 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
 
 Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/get-weather', [ProfileController::class, 'currentWeather'])->name('get-weather');
-    Route::post('/', [ProfileController::class, 'update'])->name('change-image');
+    Route::get('/get-weather', [ProfileController::class, 'currentWeather']);
+    Route::post('/', [ProfileController::class, 'update'])->name('changeImage');
     Route::prefix('/department')->group(function () {
         Route::get('/', [StDepartmentController::class, 'index'])->name('st.department.list');
     });
     Route::prefix('/subject')->group(function () {
         Route::get('/', [StSubjectController::class, 'index'])->name('st.subject.list');
         Route::post('/', [StSubjectController::class, 'store'])->name('st.subject.register');
-
+        Route::get('/search',[StSubjectController::class,'search'])->name('st.subject.search');
     });
 });
 

@@ -30,64 +30,27 @@ class StSubjectController extends Controller
 
     public function store(Request $request)
     {
-        $subject = $this->subjectRepository->getById($request['id']);
-        $exist = $subject->registeredSubject()->where('student_id', Auth::user()->student->id)->exists();
-        $status = $subject->registeredSubject()->where(['student_id' => Auth::user()->student->id, 'status' => 'Registered'])->exists();
+        $subjectId = $request['id'];
+        $registered = $this->subjectRepository->registerSubject($subjectId);
 
-        if ($exist) {
-            if (!$status) {
-                $subject->registeredSubject()->where('student_id', Auth::user()->student->id)->update(['status' => 'Registered']);
-                return redirect('student/subject')->with('success', __('messages.reg_ok'));
-            }
-            return redirect('student/subject')->with('error', __('messages.already_registered'));
+        if ($registered === true) {
+            return redirect()->back()->with('success', __('messages.reg_ok'));
+        } elseif ($registered === false) {
+            return redirect()->back()->with('error', __('messages.already_registered'));
+        } else{
+            return redirect()->back()->with('error', __('messages.cannot_register'));
         }
-
-        return redirect('student/subject')->with('error', __('messages.cannot_register'));
     }
 
+    public function search(Request $request)
+    {
+        $filters = $request->only(['subjectName_keyword', 'departmentId_keyword', 'grades_keyword', 'status_keyword']);
+        $subjects = $this->subjectRepository->searchSubjects($filters);
+        foreach ($subjects as $subject) {
+            $subject->status = $subject->registeredSubject->pluck('pivot')->firstWhere('student_id', Auth::user()->student->id)['status'] ?? null;
+            $subject->score = $subject->result->pluck('pivot')->firstWhere('student_id', Auth::user()->student->id)['score'] ?? null;
+        }
 
-
-//    public function search(Request $request)
-//    {
-//        $results = $this->subjectRepository->result->getAll()->paginate(2);
-//        $searchOption = $request['search_option'];
-//        $searchKeyword = $request['search_keyword'];
-//        $subjects = null;
-//
-//        switch ($searchOption) {
-//            case 'order_number':
-//                $subjects = $this->subjectRepository->search('id', 'like', '%' . $searchKeyword . '%')->paginate(2);
-//                break;
-//            case 'subject_name':
-//                $subjects = $this->subjectRepository->search('name', 'like', '%' . $searchKeyword . '%')->paginate(2);
-//                break;
-//            case 'department_id':
-//                $subjects = $this->subjectRepository->search('department_id', 'like', '%' . $searchKeyword . '%')->paginate(2);
-//                break;
-//            case 'actions':
-//                $subjects = $this->subjectRepository->query()
-//                    ->with('registeredSubjects')
-//                    ->whereHas('registeredSubjects', function ($query) use ($searchKeyword) {
-//                        $query->where('status', 'like', '%' . $searchKeyword . '%')->get();
-//                    })
-//                    ->paginate(2);
-////                dd($subjects);
-//                break;
-//            case 'grades':
-//                $subjects = $this->subjectRepository->query()
-//                    ->with('result')
-//                    ->whereHas('result', function ($query) use ($searchKeyword) {
-//                        $query->where('score', 'like', '%' . $searchKeyword . '%')->get();
-//                    })
-//                    ->paginate(2);
-//                break;
-//            default:
-//
-//                break;
-//
-//        }
-////        dd($subjects);
-//        return view('student.subject', compact(['subjects']));
-//    }
-
+        return view('student.subject', compact('subjects'));
+    }
 }

@@ -86,7 +86,7 @@ body {
 
 .action .menu {
     z-index: 1;
-    width: 200px;
+    width: auto;
     position: absolute;
     top: 33px;
     right: 11px;

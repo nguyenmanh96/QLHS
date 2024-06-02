@@ -12,11 +12,10 @@
                         <div class="card shadow-sm">
                             <div class="card-header bg-transparent text-center">
                                 <div class="alert alert-error" style="display: none"></div>
-                                <form action="{{route('change-image')}}" class="avatar" id="avatar" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('changeImage')}}" class="avatar" id="avatar" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <img src="{{asset('storage/avatar/'.Auth::user()->avatar)}}" id="avatar-image"
                                          class="avatar_img"  alt="avatar">
-{{--                                    @dd($a)--}}
                                     <div class="avatar_upload">
                                         <label class="upload_label" for="upload">{{__('messages.upload')}}
                                             <input type="file" id="upload" name="upload" onchange="this.form.submit()" >

@@ -189,9 +189,9 @@
                 <div class="guest-other">
                     <span class="social-title">{{__('messages.or_login_with')}}</span>
                     <button type="submit" class="btn-google btn-link btn-floating mx-1">
-                        <a class="fab fa-google" href="{{route('google-login')}}"></a>
+                        <a class="fab fa-google" href="{{route('google.login')}}"></a>
                     </button>
-                    <a class="forgot_link" href="{{route('form-forgot')}}">{{__('messages.forgot_password')}}</a>
+                    <a class="forgot_link" href="{{route('formForgot')}}">{{__('messages.forgot_password')}}</a>
                 </div>
             </div>
         </div>

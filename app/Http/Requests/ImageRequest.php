@@ -25,7 +25,7 @@ class ImageRequest extends FormRequest
             'upload.required' => __('validation.img_required'),
             'upload.image' => __('validation.img'),
             'upload.mimes' => __('validation.img_mimes'),
-            'upload.max:2048' => __('validation.img_max'), ['max' => 2048],
+            'upload.max' => __('validation.img_max',['max' => 2048]),
         ];
     }
 }

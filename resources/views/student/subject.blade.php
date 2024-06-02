@@ -5,28 +5,27 @@
         @include('_message')
         <h1 class="content-title mt-4">{{ __('messages.subject_list') }}</h1>
         <div class="search">
-            <div class="row" id="search">
-                <form id="search-form" action="" method="GET">
-                    <div class="form-group col-5">
-                        <input name="search_keyword" value="{{ old('search_keyword') }}" id="search_keyword" class="form-control" type="text" placeholder="Search" />
-                    </div>
-                    <div class="form-group col-3">
-                        <select data-filter="make" class="filter-make filter form-control" name="search_option" id="search_option">
-                            <option value="order_number">Order Number</option>
-                            <option value="subject_name">Subject Name</option>
-                            <option value="department_id">Department ID</option>
-                            <option value="grades">Grades</option>
-                            <option value="actions">Actions</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-2">
-                        <button type="submit" class="btn content-btn btn-primary">Search</button>
-                    </div>
-                </form>
-            </div>
-            <div class="row" id="filter">
-                <form class="filter-form"></form>
-            </div>
+            <form id="search-form" action="{{route('st.subject.search')}}" method="GET">
+                <div class="form-group">
+                    <input name="subjectName_keyword" value="{{ old('search_keyword') }}" id="subjectName_keyword"
+                           class="form-control" type="text" placeholder="{{__('messages.subject_name')}}"/>
+                </div>
+                <div class="form-group">
+                    <input name="departmentId_keyword" value="{{ old('search_keyword') }}" id="departmentId_keyword"
+                           class="form-control" type="text" placeholder="{{ __('messages.dep_id') }}"/>
+                </div>
+                <div class="form-group">
+                    <input name="grades_keyword" value="{{ old('search_keyword') }}" id="grades_keyword"
+                           class="form-control" type="text" placeholder="{{ __('messages.grades') }}"/>
+                </div>
+                <div class="form-group">
+                    <input name="status_keyword" value="{{ old('search_keyword') }}" id="status_keyword"
+                           class="form-control" type="text" placeholder="{{ __('messages.status') }}"/>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn content-btn btn-primary">Search</button>
+                </div>
+            </form>
         </div>
         <table class="table table-bordered mt-4">
             <thead>
@@ -35,7 +34,7 @@
                 <th scope="col">{{ __('messages.subject_name') }}</th>
                 <th scope="col">{{ __('messages.dep_id') }}</th>
                 <th scope="col">{{ __('messages.grades') }}</th>
-                <th class="action-col" scope="col">{{ __('messages.action') }}</th>
+                <th class="action-col" scope="col">{{ __('messages.status') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -51,8 +50,8 @@
                             <input type="hidden" id="id" name="id" value="{{ $subject->id }}">
 
                             <button type="submit" class="content-btn btn btn-primary"
-                                {{ $subject->status === "Registered" ? 'disabled' : '' }}>
-                                {{ $subject->status ?? __('messages.register') }}
+                                {{ $subject->status === 'Registered' ? 'disabled' : '' }}>
+                                {{ $subject->status === 'Registered' ? __('messages.' . $subject->status) : __('messages.register') }}
                             </button>
                         </form>
                     </td>
@@ -61,7 +60,7 @@
             </tbody>
         </table>
         <div class="table_footer">
-             {{ $subjects->links('vendor.pagination.custom') }}
+            {{ $subjects->links('vendor.pagination.custom') }}
         </div>
     </div>
 @endsection
@@ -77,14 +76,17 @@
             margin-top: 20px;
             display: flex;
         }
+
         #search-form {
             display: flex;
         }
-        .filter-form {
-            display: flex;
-        }
+
         .form-group {
             margin-right: 8px;
+        }
+
+        .form-group .form-control {
+            width: auto;
         }
     </style>
 @endpush

@@ -15,7 +15,7 @@
                     @include('_message')
                 </div>
                 <div class="panel-body" id="panel-body_fix">
-                    <form action="{{route('send-link')}}" id="forget-form" role="form" autocomplete="off" class="form"
+                    <form action="{{route('sendLink')}}" id="forget-form" role="form" autocomplete="off" class="form"
                           method="POST">
                         @csrf
                         <div class="form-group">
