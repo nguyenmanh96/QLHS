@@ -54,11 +54,16 @@ class SubjectController extends Controller
 
     public function destroy(Request $request)
     {
-        if ($this->subjectRepository->getById($request['id'])) {
-            $this->subjectRepository->delete($request['id']);
-            return redirect('admin/subject')->with('success', __('messages.delete_ok'));
-        }
+        $subjectId = $request['id'];
+        $isRegistered = $this->subjectRepository->filterDelete($subjectId);
 
-        return redirect('admin/subject')->with('error', __('messages.sub_not_exists'));
+        if ($isRegistered === true) {
+            $this->subjectRepository->delete($request['id']);
+            return redirect()->back()->with('success', __('messages.delete_ok'));
+        } elseif ($isRegistered === false) {
+            return redirect()->back()->with('error', __('messages.st_already_registered'));
+        }
+        return redirect()->back()->with('error', __('messages.sub_not_exists'));
+
     }
 }
