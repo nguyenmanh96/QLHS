@@ -8,7 +8,7 @@ use App\Http\Requests\SubjectRequest;
 use App\Repositories\Repository\SubjectRepository;
 use Illuminate\Http\Request;
 
-class AdminSubjectController extends Controller
+class SubjectController extends Controller
 {
     protected $subjectRepository;
 
@@ -54,13 +54,16 @@ class AdminSubjectController extends Controller
 
     public function destroy(Request $request)
     {
-        if ($this->subjectRepository->getById($request['id'])) {
+        $subjectId = $request['id'];
+        $isRegistered = $this->subjectRepository->filterDelete($subjectId);
 
+        if ($isRegistered === true) {
             $this->subjectRepository->delete($request['id']);
-
-            return redirect('admin/subject')->with('success', __('messages.delete_ok'));
+            return redirect()->back()->with('success', __('messages.delete_ok'));
+        } elseif ($isRegistered === false) {
+            return redirect()->back()->with('error', __('messages.st_already_registered'));
         }
+        return redirect()->back()->with('error', __('messages.sub_not_exists'));
 
-        return redirect('admin/subject')->with('error', __('messages.sub_not_exists'));
     }
 }

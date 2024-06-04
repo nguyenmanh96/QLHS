@@ -13,7 +13,6 @@ class DepartmentNameRequest extends FormRequest
 
     public function rules()
     {
-
         return [
             'departmentName' => [
                 'required',

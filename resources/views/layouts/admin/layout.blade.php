@@ -18,6 +18,6 @@
 
 @include('layouts.admin.footer')
 </body>
-@stack('admin-scripts')
+@stack('scripts')
 </html>
 

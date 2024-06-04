@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ActionNotChange;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SubjectRequest extends FormRequest

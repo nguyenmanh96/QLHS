@@ -28,7 +28,7 @@ return [
     'subject_list' => 'Danh sách môn học',
     'quick_add' => 'Thêm nhanh',
     'logout' => 'Đăng xuất',
-    'order_number' => 'STT',
+    'order_number' => 'ID',
     'department_name' => 'Tên khoa',
     'subject_name' => 'Tên môn học',
     'created_at' => 'Ngày tạo',

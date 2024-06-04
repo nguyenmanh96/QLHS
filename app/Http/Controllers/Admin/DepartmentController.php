@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\DepartmentNameRequest;
 
 
-class AdminDepartmentController extends Controller
+class DepartmentController extends Controller
 {
     protected $departmentRepository;
 
