@@ -24,9 +24,11 @@
                     <td>{{$subject['department_id']}}</td>
                     <td>{{$subject['created_at']}}</td>
                     <td class="tr-flex">
-                        <a href="{{route('edit-subject',$subject['id'])}}"
+                        <a href="{{route('admin.subject.edit',$subject['id'])}}"
                            class="content-btn btn btn-primary">{{__('messages.edit')}}</a>
-                        <button type="button" data-value="{{$subject['id']}}" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" class="content-btn btn btn-danger delete_department-btn">{{__('messages.delete')}}</button>
+                        <button type="button" data-value="{{$subject['id']}}" data-bs-toggle="modal"
+                                data-bs-target="#confirmDeleteModal"
+                                class="content-btn btn btn-danger delete_department-btn">{{__('messages.delete')}}</button>
                     </td>
                 </tr>
             @endforeach
@@ -40,7 +42,7 @@
                         <h5 class="modal-title"
                             id="confirmDeleteModalLabel">{{__('messages.warning')}}</h5>
                     </div>
-                    <form action="{{route('delete-subject')}}" method="POST">
+                    <form action="{{route('admin.subject.delete')}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" id="id" name='id' value="">
@@ -70,7 +72,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="modal-alert_error"></div>
-                            <form action="{{route('add-subject')}}" method="POST" id="addSubjectForm">
+                            <form action="{{route('admin.subject.add')}}" method="POST" id="addSubjectForm">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="subjectName"
@@ -100,8 +102,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            $('.delete_department-btn').click(function (e) {
-                e.preventDefault()
+            $('.delete_department-btn').click(function () {
                 const subject_id = $(this).data('value');
                 $('#id').val(subject_id);
             })

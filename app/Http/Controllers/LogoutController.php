@@ -10,6 +10,6 @@ class LogoutController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('formlogin');
+        return redirect()->route('formLogin');
     }
 }

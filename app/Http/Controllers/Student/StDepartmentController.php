@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Enums\Pagination;
 use App\Http\Controllers\Controller;
 use App\Repositories\Repository\DepartmentRepository;
 
-class StudentDepartmentController extends Controller
+class StDepartmentController extends Controller
 {
     protected $departmentRepository;
     public function __construct(DepartmentRepository $departmentRepository)
@@ -15,8 +16,7 @@ class StudentDepartmentController extends Controller
 
     public function index()
     {
-        $perPage = 2;
-        $departments = $this->departmentRepository->getAll()->paginate($perPage);
+        $departments = $this->departmentRepository->getAll()->paginate(Pagination::PERPAGE);
         return view('student.department',compact('departments'));
     }
 }

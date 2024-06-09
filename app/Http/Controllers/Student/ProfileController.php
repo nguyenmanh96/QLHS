@@ -5,27 +5,23 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageRequest;
 use App\Repositories\Repository\StudentRepository;
-use App\Repositories\Repository\UserRepository;
-use Dotenv\Dotenv;
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StudentDashboardController extends Controller
+class ProfileController extends Controller
 {
     protected $studentRepository;
-    protected $userRepository;
 
-    public function __construct(StudentRepository $studentRepository,UserRepository $userRepository)
+    public function __construct(StudentRepository $studentRepository)
     {
-        $this->userRepository = $userRepository;
         $this->studentRepository = $studentRepository;
     }
 
     public function index()
     {
         $student = Auth::user()->student;
-        return view('student.dashboard', compact('student'));
+        return view('student.profile', compact('student'));
     }
 
     public function currentWeather()
@@ -50,12 +46,11 @@ class StudentDashboardController extends Controller
     {
         if ($image = $request->file('upload')) {
             $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('avatar'), $imageName);
-            $id = Auth::user()->id;
-            $this->userRepository->update($id, ['avatar' => $imageName]);
+            $image->storeAs('avatar', $imageName, 'public');
+            Auth::user()->update(['avatar' => $imageName]);
 
-            return redirect('student/profile')->with('success', 'ok');
+            return redirect('student/profile')->with('success', __('messages.upload_ok'));
         }
-        return redirect('student/profile')->with('success', 'k duoc');
+        return redirect('student/profile')->with('success', __('messages.upload_error'));
     }
 }

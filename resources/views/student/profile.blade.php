@@ -12,19 +12,21 @@
                         <div class="card shadow-sm">
                             <div class="card-header bg-transparent text-center">
                                 <div class="alert alert-error" style="display: none"></div>
-                                <form action="{{route('change-image')}}" class="avatar" id="avatar" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('changeImage')}}" class="avatar" id="avatar" method="POST"
+                                      enctype="multipart/form-data">
                                     @csrf
-                                    <img src="{{asset('avatar/'.Auth::user()->avatar)}}" id="avatar-image"
-                                         class="avatar_img"  alt="avatar">
+                                    <img src="{{asset('storage/avatar/'.Auth::user()->avatar)}}" id="avatar-image"
+                                         class="avatar_img" alt="avatar">
                                     <div class="avatar_upload">
                                         <label class="upload_label" for="upload">{{__('messages.upload')}}
-                                            <input type="file" id="upload" name="upload" onchange="this.form.submit()" >
+                                            <input type="file" id="upload" name="upload" onchange="this.form.submit()">
                                         </label>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-body">
-                                <p class="mb-0"><strong class="pr-1">{{__('messages.st_id')}} :</strong>{{$student->id}}
+                                <p class="mb-0"><strong class="pr-1">{{__('messages.st_id')}}
+                                        :</strong>{{$student->code}}
                                 </p>
                                 <p class="mb-0"><strong class="pr-1">{{__('messages.st_name')}}
                                         :</strong>{{$student->name}}</p>
@@ -42,7 +44,7 @@
                                 <table class="table table-bordered">
                                     <tr>
                                         <th width="30%">{{__('messages.gender')}}</th>
-                                        <td>{{__('messages.'.$student->code)}}</td>
+                                        <td>{{__('messages.'.$student->sex)}}</td>
                                     </tr>
                                     <tr>
                                         <th width="30%">{{__('messages.academic_yeah')}}</th>
@@ -69,9 +71,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script>
-
-    </script>
-
-@endpush

@@ -39,11 +39,11 @@
     <div class="dashboard-atom">
         <div class="atom-panel atom-panel--left left">
             <nav class="atom-toolbar atom-toolbar-vertical expanded">
-                <a href="{{ redirect('/student/department')->getTargetUrl() }}" class="btn btn-default">
+                <a href="{{ route('st.department.list') }}" class="btn btn-default">
                     <span class="octicon octicon-terminal"></span>
                     <span class="title">{{__('messages.department_list')}}</span>
                 </a>
-                <a href="{{redirect('/student/subject')->getTargetUrl()}}" class="btn btn-default">
+                <a href="{{route('st.subject.list')}}" class="btn btn-default">
                     <span class="octicon octicon-telescope"></span>
                     <span class="title">{{__('messages.subject_list')}}</span>
                 </a>

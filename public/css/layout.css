@@ -86,10 +86,10 @@ body {
 
 .action .menu {
     z-index: 1;
-    width: 200px;
+    width: auto;
     position: absolute;
-    top: 53px;
-    right: 58px;
+    top: 33px;
+    right: 11px;
     padding: 10px 20px;
     background: #FFFFFF;
     border-radius: 5px;
@@ -102,7 +102,8 @@ body {
 
 .action .menu.active {
     border: solid 1px;
-    right: 10px;
+    right: 11px;
+    top: 55px;
     visibility: visible;
     opacity: 1;
     width: auto;

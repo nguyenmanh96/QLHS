@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 
-class AdminDashboardController extends Controller
+class DashboardController extends Controller
 {
     public function dashboard()
     {

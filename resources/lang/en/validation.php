@@ -3,6 +3,7 @@
 return [
     'email_email' => 'Email address is not valid',
     'email_required' => 'Enter an email',
+    'email_unique' => 'Email already exists',
     'email_max' => 'The email address cannot exceed :max characters.',
     'password_required' => 'Enter a password',
     'password_string' => 'Password contains invalid characters',
@@ -14,11 +15,20 @@ return [
     'sub_required' => 'Please enter the subject name',
     'sub_max' => 'The subject name cannot exceed :max characters',
     'sub_unique' => 'Subject already exists',
-    'depId_required' => 'Department ID is required',
-    'depId_exists' => 'Department ID does not exist',
+    'st_alpha' => 'Student name must contain only alphabetic characters',
+    'st_max' => 'The student name cannot exceed :max characters',
+    'st_required' => 'Enter student name',
+    'dob_required' => 'Enter date of birth',
+    'dob_date' => 'The date of birth must be in the format YYYY-MM-DD',
+    'sex_required' => 'Please select gender',
+    'sex_in' => 'Gender must be ' . __('messages.Male') . ' or ' . __('messages.Female'),
+    'depId_required' => 'Department is required',
+    'depId_exists' => 'Department does not exist',
     'img_required' => 'The image field is required',
     'img' => 'The image must be an image file',
     'img_mimes' => 'The image must be a file of type: :values',
     'img_max' => 'The image may not be greater than :max kilobytes',
-    'already_registered' => 'You have already registered'
+    'already_registered' => 'You have already registered',
+    'grades_required' => 'Grades is required',
+    'grades_numeric' => 'The grades must be a number'
 ];

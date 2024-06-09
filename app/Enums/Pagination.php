@@ -6,6 +6,6 @@ use Spatie\Enum\Enum;
 
 final class Pagination extends Enum
 {
-    const PERPAGE = 10;
+    const PERPAGE = 6;
 
 }

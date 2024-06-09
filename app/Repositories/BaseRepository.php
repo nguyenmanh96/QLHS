@@ -45,13 +45,8 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->where($col, $value);
     }
 
-    public function exists($conditions)
+    public function exists($col, $value)
     {
-        return $this->model->where($conditions)->exists();
+        return $this->model->where($col, $value)->exists();
     }
-//
-//    public function search($condition,$operator,$value){
-//        return $this->model->where($condition,$operator,$value);
-//    }
-//
 }
