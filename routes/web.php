@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Student\StSubjectController;
+use App\Http\Controllers\StudentListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -49,9 +50,20 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
         Route::put('/update', [SubjectController::class, 'update'])->name('admin.subject.update');
         Route::delete('/delete', [SubjectController::class, 'destroy'])->name('admin.subject.delete');
     });
+    Route::prefix('/student-list')->group(function () {
+        Route::get('/', [StudentListController::class, 'index'])->name('student.list');
+        Route::get('/add', [StudentListController::class, 'create'])->name('student.getForm.add');
+        Route::post('/quick-add', [StudentListController::class, 'store'])->name('student.add');
+        Route::get('{id}/edit', [StudentListController::class, 'edit'])->name('student.edit');
+        Route::put('/update', [StudentListController::class, 'update'])->name('student.update');
+        Route::delete('/delete', [StudentListController::class, 'destroy'])->name('student.delete');
+        Route::post('/mail-notification', [StudentListController::class, 'notification'])->name('student.notification');
+        Route::get('{id}/registered-subject', [StudentListController::class, 'show'])->name('student.registeredSubject');
+        Route::put('/update-score', [StudentListController::class, 'updateScore'])->name('student.score.update');
+    });
 });
 
-Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
+Route::prefix('student')->middleware(['auth', 'auth.user'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/get-weather', [ProfileController::class, 'currentWeather']);
     Route::post('/', [ProfileController::class, 'update'])->name('changeImage');
@@ -61,7 +73,7 @@ Route::prefix('student')->middleware(['auth','auth.user'])->group(function () {
     Route::prefix('/subject')->group(function () {
         Route::get('/', [StSubjectController::class, 'index'])->name('st.subject.list');
         Route::post('/', [StSubjectController::class, 'store'])->name('st.subject.register');
-        Route::get('/search',[StSubjectController::class,'search'])->name('st.subject.search');
+        Route::get('/search', [StSubjectController::class, 'search'])->name('st.subject.search');
     });
 });
 
