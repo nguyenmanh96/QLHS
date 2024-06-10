@@ -43,7 +43,7 @@
                         @method('DELETE')
                         <input type="hidden" id="id" name="id" value="{{$subject->id}}">
                         <div class="modal-body">
-                            <p>{{__('messages.ask_delete')}}</p>
+                            <p>{{__('messages.ask_delete_sub')}}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="content-btn btn btn-secondary"
